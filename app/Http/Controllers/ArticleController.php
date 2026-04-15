@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class ArticleController extends Controller
+class ArticleController extends Controller implements HasMiddleware
 {
     /**
      * Display a listing of the resource.
@@ -61,5 +63,14 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+
+    public static function middleware(): array
+    {
+        return [
+
+            new Middleware('auth')->except(['index', 'show'])
+
+        ];
     }
 }

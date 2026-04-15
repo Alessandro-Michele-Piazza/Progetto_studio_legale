@@ -1,11 +1,15 @@
-@props(['title' => 'Studio Legale', 'styles' => []])
+@props(['title' => 'Studio Legale', 'description' => '', 'robots' => 'index, follow', 'styles' => []])
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="{{ $robots }}">
+    @if($description)
+        <meta name="description" content="{{ $description }}">
+    @endif
 
      <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +31,8 @@
     </main>
 
     <x-footer />
+
+    @stack('scripts')
 </body>
 
 </html>

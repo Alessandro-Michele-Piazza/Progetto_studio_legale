@@ -1,0 +1,209 @@
+/* ============================================================
+   AUTH PAGES – auth.css
+   Caricato esclusivamente su /login e /register123456789
+   ============================================================ */
+
+/* ---- Wrapper centrato ---- */
+.auth-wrapper {
+    min-height: calc(100vh - 56px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1rem 3rem;
+    background-color: var(--bianco_sfondo);
+}
+
+/* ---- Card ---- */
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgba(26, 60, 90, 0.12);
+    overflow: hidden;
+}
+
+/* ---- Header della card ---- */
+.auth-header {
+    background-color: var(--blu_scuro);
+    padding: 2rem 2rem 1.5rem;
+    text-align: center;
+}
+
+.auth-logo-link {
+    display: inline-block;
+    font-family: var(--playfair);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dorato_medio);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: color 0.2s ease;
+}
+
+.auth-logo-link:hover,
+.auth-logo-link:focus {
+    color: var(--dorato_chiaro);
+    text-decoration: none;
+}
+
+.auth-title {
+    font-family: var(--playfair);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+/* ---- Corpo del form ---- */
+.auth-body {
+    padding: 2rem;
+}
+
+/* ---- Singolo campo ---- */
+.auth-field {
+    margin-bottom: 1.25rem;
+}
+
+.auth-label {
+    display: block;
+    font-family: var(--opensans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--nero_testo);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.auth-input {
+    display: block;
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    font-family: var(--opensans);
+    font-size: 0.95rem;
+    color: var(--nero_testo);
+    background-color: #fff;
+    border: 1.5px solid #ced4da;
+    border-radius: 3px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1.5;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: var(--blu_scuro);
+    box-shadow: 0 0 0 3px rgba(26, 60, 90, 0.12);
+}
+
+.auth-input--error {
+    border-color: #dc3545;
+}
+
+.auth-input--error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12);
+}
+
+.auth-error {
+    display: block;
+    margin-top: 0.3rem;
+    font-family: var(--opensans);
+    font-size: 0.8rem;
+    color: #dc3545;
+}
+
+/* ---- Campo password con occhiolino ---- */
+.password-field {
+    position: relative;
+}
+
+.password-field .auth-input {
+    padding-right: 2.75rem;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0.2rem;
+    cursor: pointer;
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+    color: var(--blu_scuro);
+}
+
+.password-toggle-btn:focus-visible {
+    outline: 2px solid var(--dorato_medio);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* ---- Bottone submit ---- */
+.auth-submit-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+    font-family: var(--opensans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: var(--dorato_medio);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.auth-submit-btn:hover {
+    background-color: var(--dorato_chiaro);
+}
+
+.auth-submit-btn:active {
+    transform: translateY(1px);
+}
+
+.auth-submit-btn:focus-visible {
+    outline: 3px solid var(--blu_scuro);
+    outline-offset: 2px;
+}
+
+/* ---- Messaggi di stato (es. link reset password inviato) ---- */
+.auth-alert {
+    padding: 0.75rem 1rem;
+    border-radius: 3px;
+    font-family: var(--opensans);
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+}
+
+.auth-alert--success {
+    background-color: #d1e7dd;
+    color: #0a3622;
+    border: 1px solid #a3cfbb;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+    .auth-card {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .auth-wrapper {
+        padding: 4rem 0 0;
+        align-items: flex-start;
+    }
+}
