@@ -6,12 +6,12 @@ use App\Http\Controllers\ContactController;
 
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
-Route::get('/contact', [PublicController::class, 'contact'])->name('contatti');
-Route::post('/contact', [ContactController::class, 'send'])->name('contatti.send')->middleware('throttle:5,1');
+Route::get('/contatti', [PublicController::class, 'contact'])->name('contatti');
+Route::post('/contatti', [ContactController::class, 'send'])->name('contatti.send')->middleware('throttle:5,1');
 
 // Anteprima email (solo in ambiente locale)
 if (app()->environment('local')) {
-    Route::get('/email-preview/contact', function () {
+    Route::get('/email-preview/contatti', function () {
         $data = [
             'nome'       => 'Mario',
             'cognome'    => 'Rossi',
