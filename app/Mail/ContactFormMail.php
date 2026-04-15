@@ -12,14 +12,12 @@ class ContactFormMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(
-        public readonly array $data
-    ) {}
+    public function __construct(public readonly array $data) {}
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nuova richiesta di consulenza — ' . $this->data['area_label'],
+            subject: 'Nuovo messaggio da ' . $this->data['name'],
             replyTo: [$this->data['email']],
         );
     }

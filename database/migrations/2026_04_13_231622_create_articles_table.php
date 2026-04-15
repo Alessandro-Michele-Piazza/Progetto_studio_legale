@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');          // Titolo dell'articolo
-            $table->string('slug')->unique(); // URL amichevole (es. il-diritto-civile-oggi)
-            $table->text('body');             // Il contenuto vero e proprio dell'articolo
-            $table->string('category');       // La categoria (Amministrativo, Civile, ecc.)
-            $table->string('image')->nullable(); // Una foto per l'articolo (opzionale)
-            $table->timestamps();             // created_at e updated_at
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->longText('body');
+            $table->unsignedSmallInteger('reading_time')->default(1);
+            $table->timestamp('published_at')->nullable()->index();
+            $table->timestamps();
         });
     }
 

@@ -18,6 +18,37 @@
     margin-bottom: 0.75rem;
 }
 
+/* ============================================================
+   SEZIONE: Hero Contatti
+   ============================================================ */
+
+.contatti-hero {
+    background-color: var(--blu_scuro);
+    padding: 7rem 0 3.5rem;
+    margin-bottom: 0;
+}
+
+.contatti-hero .section-label {
+    color: var(--dorato_chiaro);
+}
+
+.contatti-hero__title {
+    font-family: var(--playfair);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.contatti-hero__subtitle {
+    font-family: var(--opensans);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.75;
+}
+
 .section-title {
     font-family: var(--playfair);
     font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -33,27 +64,8 @@
     margin-bottom: 2rem;
 }
 
-.btn-gold {
-    color: var(--blu_scuro);
-    background-color: var(--dorato_medio);
-    border: 2px solid var(--dorato_medio);
-    font-family: var(--opensans);
-    font-weight: 600;
-    letter-spacing: 1px;
-    padding: 0.75rem 2rem;
-    border-radius: 0;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.btn-gold:hover {
-    background-color: var(--dorato_chiaro);
-    border-color: var(--dorato_chiaro);
-    color: var(--blu_scuro);
-}
-
-
 /* ============================================================
-   SEZIONE: Principale (Info + Form)
+   SEZIONE: Principale (Info cards grid)
    ============================================================ */
 
 .contatti-main-section {
@@ -61,58 +73,51 @@
     background-color: var(--bianco_sfondo);
 }
 
+.contatti-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
 
-/* ---- Card condivisa ---- */
+/* ---- Info Card singola ---- */
 
-.contatti-card {
+.contatti-info-card {
     background-color: #ffffff;
-    padding: 2.75rem;
-    height: 100%;
-    box-shadow: 0 2px 20px rgba(26, 60, 90, 0.07);
-    border-top: 4px solid transparent;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(26, 60, 90, 0.07);
+    border-bottom: 3px solid transparent;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.contatti-card--info {
-    border-top-color: var(--dorato_medio);
+.contatti-info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(26, 60, 90, 0.13);
+    border-bottom-color: var(--dorato_medio);
 }
 
-.contatti-card--form {
-    border-top-color: var(--blu_scuro);
-}
-
-
-/* ============================================================
-   SEZIONE: Lista contatti
-   ============================================================ */
-
-.contatti-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-}
-
-.contatti-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-}
-
-.contatti-icona {
-    display: flex;
+.contatti-info-card__icon {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
     background-color: var(--blu_scuro);
-    color: var(--dorato_medio);
-    font-size: 1rem;
+    color: var(--bianco_sfondo);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.contatti-item-label {
+.contatti-info-card:hover .contatti-info-card__icon {
+    background-color: var(--dorato_medio);
+    color: var(--bianco_sfondo);
+    transform: scale(1.1);
+}
+
+.contatti-info-card__label {
     display: block;
     font-family: var(--opensans);
     font-size: 0.72rem;
@@ -120,209 +125,27 @@
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--dorato_medio);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.75rem;
 }
 
-.contatti-item-testo {
+.contatti-info-card__text {
     font-family: var(--opensans);
     font-size: 0.95rem;
     color: var(--nero_testo);
     margin: 0;
-    line-height: 1.65;
+    line-height: 1.7;
 }
 
-.contatti-item-testo a {
+.contatti-info-card__text a {
     color: var(--nero_testo);
     text-decoration: none;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.5);
-    transition: color 0.2s, border-color 0.2s;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.contatti-item-testo a:hover {
+.contatti-info-card__text a:hover {
     color: var(--blu_scuro);
     border-bottom-color: var(--dorato_medio);
-}
-
-
-/* ============================================================
-   SEZIONE: Form consulenza
-   ============================================================ */
-
-.contatti-form-intro {
-    font-family: var(--opensans);
-    font-size: 0.95rem;
-    color: #666;
-    line-height: 1.75;
-    margin-bottom: 1.75rem;
-}
-
-.contatti-form-label {
-    font-family: var(--opensans);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--blu_scuro);
-    margin-bottom: 0.4rem;
-    display: block;
-}
-
-.contatti-form-control {
-    font-family: var(--opensans);
-    font-size: 0.95rem;
-    color: var(--nero_testo);
-    background-color: var(--bianco_sfondo);
-    border: 1px solid #cdd5de;
-    border-radius: 0;
-    padding: 0.7rem 1rem;
-    width: 100%;
-    transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s;
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-.contatti-form-control:focus {
-    border-color: var(--dorato_medio);
-    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.18);
-    background-color: #ffffff;
-    outline: none;
-}
-
-.contatti-select-wrapper {
-    position: relative;
-}
-
-.contatti-select-wrapper::after {
-    content: "\f107";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--blu_scuro);
-    pointer-events: none;
-}
-
-.contatti-privacy-label {
-    font-family: var(--opensans);
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #666;
-    line-height: 1.5;
-    cursor: pointer;
-}
-
-.contatti-check-input {
-    width: 1rem;
-    height: 1rem;
-    border: 1px solid #cdd5de;
-    border-radius: 0;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.contatti-check-input:checked {
-    background-color: var(--blu_scuro);
-    border-color: var(--blu_scuro);
-}
-
-.contatti-check-input:focus {
-    box-shadow: 0 0 0 3px rgba(26, 60, 90, 0.2);
-    outline: none;
-}
-
-.contatti-btn-submit {
-    font-family: var(--opensans);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 1rem;
-    width: 100%;
-}
-
-.contatti-required-note {
-    font-family: var(--opensans);
-    font-size: 0.8rem;
-    color: #999;
-    margin-top: 0.5rem;
-}
-
-
-/* ============================================================
-   SEZIONE: Honeypot anti-spam (campo nascosto)
-   ============================================================ */
-
-.contatti-hp {
-    position: absolute;
-    left: -9999px;
-    top: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    opacity: 0;
-}
-
-
-/* ============================================================
-   SEZIONE: Alert e messaggi di stato
-   ============================================================ */
-
-.contatti-alert {
-    padding: 1rem 1.25rem;
-    margin-bottom: 1.5rem;
-    font-family: var(--opensans);
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-.contatti-alert--success {
-    background-color: #eaf7ee;
-    border-left: 4px solid #2e7d4f;
-    color: #1e5635;
-}
-
-.contatti-alert--error {
-    background-color: #fdf0ef;
-    border-left: 4px solid #c0392b;
-    color: #922b21;
-}
-
-.contatti-alert-title {
-    font-weight: 700;
-    margin: 0 0 0.5rem;
-}
-
-.contatti-alert-list {
-    margin: 0;
-    padding-left: 1.25rem;
-}
-
-.contatti-alert-list li {
-    margin-bottom: 0.2rem;
-}
-
-
-/* ============================================================
-   SEZIONE: Errori di validazione per campo
-   ============================================================ */
-
-.contatti-form-control--error {
-    border-color: #c0392b;
-}
-
-.contatti-form-control--error:focus {
-    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.18);
-    border-color: #c0392b;
-}
-
-.contatti-field-error {
-    display: block;
-    font-family: var(--opensans);
-    font-size: 0.8rem;
-    color: #c0392b;
-    margin-top: 0.35rem;
 }
 
 
@@ -366,8 +189,8 @@
    ============================================================ */
 
 @media (max-width: 991.98px) {
-    .contatti-card {
-        height: auto;
+    .contatti-info-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -376,16 +199,16 @@
         padding: 3.5rem 0 4rem;
     }
 
-    .contatti-card {
-        padding: 1.75rem;
-    }
-
     .contatti-mappa-wrapper {
         padding-bottom: 65%;
     }
 }
 
 @media (max-width: 575.98px) {
+    .contatti-info-grid {
+        grid-template-columns: 1fr;
+    }
+
     .contatti-mappa-wrapper {
         padding-bottom: 80%;
         min-height: 280px;

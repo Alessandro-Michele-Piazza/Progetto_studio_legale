@@ -22,21 +22,19 @@
                         Aree d'intervento
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Diritto Civile</a></li>
-                        <li><a class="dropdown-item" href="#">Diritto Penale</a></li>
-                        <li><a class="dropdown-item" href="#">Diritto del Lavoro</a></li>
-                        <li><a class="dropdown-item" href="#">Diritto di Famiglia</a></li>
-                        <li><a class="dropdown-item" href="#">Diritto Amministrativo</a></li>
-                        <li><a class="dropdown-item" href="#">Diritto Tributario</a></li>
-                        <li><a class="dropdown-item" href="#">Diritto Internazionale</a></li>
+                        @foreach($navCategories ?? [] as $category)
+                            <li><a class="dropdown-item"
+                                    href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Articoli</a>
+                    <a class="nav-link" href="{{ route('articoli.index') }}">Articoli</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contatti') }}">Contatti</a>
                 </li>
+
 
                 @auth
                     <li class="nav-item dropdown">
@@ -45,14 +43,15 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href=" ">Dashboard</a>
-                            </li>
-                            <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item">Logout</button>
                                 </form>
                             </li>
+                            <li>
+                                <a href="{{ route('articoli.create') }}" class="dropdown-item">Nuovo Articolo</a>
+                            </li>
+
                         </ul>
                     </li>
                 @endauth

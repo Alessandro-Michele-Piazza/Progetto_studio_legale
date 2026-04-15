@@ -1,4 +1,4 @@
-@props(['title' => 'Studio Legale', 'description' => '', 'robots' => 'index, follow', 'styles' => []])
+@props(['title' => 'Studio Legale', 'description' => '', 'robots' => 'index, follow', 'styles' => [], 'ogTitle' => '', 'ogDescription' => '', 'ogUrl' => '', 'ogType' => 'website'])
 
 <!DOCTYPE html>
 <html lang="it">
@@ -10,6 +10,25 @@
     @if($description)
         <meta name="description" content="{{ $description }}">
     @endif
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ $ogTitle ?: $title }}">
+    @if($description)
+        <meta property="og:description" content="{{ $ogDescription ?: $description }}">
+    @endif
+    <meta property="og:type" content="{{ $ogType }}">
+    <meta property="og:url" content="{{ $ogUrl ?: url()->current() }}">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Studi Legali Consorziati">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $ogTitle ?: $title }}">
+    @if($description)
+        <meta name="twitter:description" content="{{ $ogDescription ?: $description }}">
+    @endif
+
+    <link rel="canonical" href="{{ $ogUrl ?: url()->current() }}">
 
      <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

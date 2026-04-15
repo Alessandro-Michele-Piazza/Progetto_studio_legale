@@ -113,6 +113,13 @@
     color: var(--dorato_chiaro);
 }
 
+/* ---- Footer links per categoria ---- */
+
+.footer-links a i {
+    color: var(--dorato_medio);
+    font-size: 0.7rem;
+}
+
 @media (max-width: 767.98px) {
     .site-footer {
         padding-top: 3rem;

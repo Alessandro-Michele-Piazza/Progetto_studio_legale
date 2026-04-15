@@ -16,13 +16,13 @@
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <h5 class="footer-title">Aree d'intervento</h5>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diritto Civile</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diritto Penale</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diritto del Lavoro</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diritto di Famiglia</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diritto Amministrativo</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diritto Tributario</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Diritto Internazionale</a></li>
+                    @foreach($navCategories ?? [] as $category)
+                        <li>
+                            <a href="{{ route('categories.show', $category) }}">
+                                <i class="fas fa-chevron-right"></i> {{ $category->name }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -32,7 +32,7 @@
                 <ul class="footer-contact">
                     <li><i class="fas fa-map-marker-alt"></i> Via Simili n. 14, Catania</li>
                     <li><i class="fas fa-phone"></i> +39 095 530951</li>
-                    <li><i class="fas fa-envelope"></i> <a href="mailto:vallonelegal@gmail.com">vallonelegal@gmail.com</a></li>
+                    <li><i class="fas fa-envelope"></i> vallonelegal@gmail.com</li>
                     <li><i class="fas fa-clock"></i> Lun - Ven: 9:00 - 18:00</li>
                 </ul>
             </div>

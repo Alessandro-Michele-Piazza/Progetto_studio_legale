@@ -1,6 +1,6 @@
 <x-layout title="Studio Legale | Consulenza Legale Specializzata - Studi Legali Consorziati"
     description="Gli Studi Legali Consorziati a Catania offrono consulenza legale specializzata in diritto civile, penale, amministrativo e del lavoro. Fondati nel 1998, siamo un punto di riferimento per privati, aziende e istituzioni in tutta la Sicilia. Contattaci per una consulenza personalizzata."
-    keywords="studio legale catania, consulenza legale, avvocati catania, diritto civile, diritto penale, diritto amministrativo, diritto del lavoro, assistenza legale, consulenza legale sicilia">
+    :styles="['resources/css/welcome.css']">
     <!-- HERO SECTION con Video Background -->
     <header class="hero-section">
         <video autoplay muted loop playsinline poster="img/fallback-hero.jpg" class="video-bg">
@@ -12,8 +12,9 @@
             <h1 class="display-3 font-title text-white mb-3">Studi Legali Consorziati</h1>
             <div class="hero-divider"></div>
             <p class="lead text-white mb-4 font-body">Consulenza legale specializzata dal 1998</p>
-            <a href="#chi-siamo" class="btn btn-outline-gold btn-lg">
-                <i class="fas fa-arrow-down me-2"></i>Scopri di più
+            <a href="#chi-siamo" class="button-home">
+                <i class="fa-solid fa-arrow-down-long arrow-icon arrow"></i>
+                <span class="text">Scopri di più</span>
             </a>
         </div>
     </header>
@@ -48,13 +49,35 @@
             <h2 class="parallax-title font-title">Aree d'Intervento</h2>
             <div class="parallax-divider"></div>
             <ul class="parallax-links">
-                <li><a href="#">Diritto Civile</a></li>
-                <li><a href="#">Diritto del Lavoro</a></li>
-                <li><a href="#">Diritto Amministrativo</a></li>
-                <li><a href="#">Diritto Tributario</a></li>
+                @foreach($categories as $category)
+                    <li><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></li>
+                @endforeach
             </ul>
         </div>
     </section>
+
+    <!-- ULTIMI ARTICOLI -->
+    @if($latestArticles->isNotEmpty())
+        <section class="section-padding latest-articles-section">
+            <div class="container">
+                <div class="chi-siamo-header">
+                    <span class="section-label"><i class="fas fa-newspaper me-2"></i>Dal Nostro Blog</span>
+                    <h2 class="section-title">Ultimi Articoli</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="latest-articles-grid">
+                    @foreach($latestArticles as $article)
+                        <x-article-card :article="$article" />
+                    @endforeach
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{{ route('articoli.index') }}" class="btn-site">
+                        <i class="fas fa-arrow-right me-2"></i>Tutti gli Articoli
+                    </a>
+                </div>
+            </div>
+        </section>
+    @endif
 
     <!-- CTA CONTATTI -->
     <section class="cta-section">
@@ -62,8 +85,8 @@
             <h2 class="font-title text-white mb-3">Hai bisogno di assistenza legale?</h2>
             <p class="text-white-50 mb-4 font-body">Contattaci per una consulenza personalizzata. Il primo colloquio è
                 gratuito.</p>
-            <a href="{{ route('contatti') }}" class="btn btn-gold btn-lg">
-                <i class="fas fa-phone-alt me-2"></i>Contattaci Ora
+            <a href="{{ route('contatti') }}" class="btn-site">
+                <i class="fas fa-phone-alt me-2  "></i>Contattaci Ora
             </a>
         </div>
     </section>

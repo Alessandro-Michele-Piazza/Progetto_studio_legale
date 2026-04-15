@@ -3,11 +3,14 @@
 @import "footer";
 @import "welcome";
 @import "contatti";
-
+@import "articles";
+@import "bottoni";
 
 :root {
     /* HEADER E TITOLI */
     --blu_scuro: #1a3c5a;
+
+    --blu_chiaro: #2b689d;
 
     /* SFONDO E COLORI SECONDARI */
     --bianco_sfondo: #f8f9fa;
@@ -53,32 +56,59 @@ h6,
     font-family: var(--opensans);
 }
 
-/* Custom Utilities */
-.testo_blu {
-    color: var(--blu_scuro);
-}
-.testo_dorato {
-    color: var(--dorato_medio);
-}
-
-.sfondo_blu {
-    background-color: var(--blu_scuro);
-}
-.sfondo_dorato {
-    background-color: var(--dorato_medio);
-}
-
-.bordo_dorato {
-    border: 2px solid var(--dorato_medio);
-}
-
-.bordo_blu {
-    border: 2px solid var(--blu_scuro);
-}
-
 /* ========================================
    SMOOTH SCROLL
    ======================================== */
 html {
     scroll-behavior: smooth;
+}
+
+/* ========================================
+   PULSANTE GLOBALE (.btn-site)
+   ======================================== */
+.btn-site {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: var(--blu_scuro);
+    color: #fff;
+    font-family: var(--opensans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--blu_scuro);
+    border-radius: 0;
+    cursor: pointer;
+    line-height: 1.5;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.btn-site:hover,
+.btn-site:focus {
+    background-color: transparent;
+    border-color: var(--blu_scuro);
+    color: var(--blu_scuro);
+    text-decoration: none;
+}
+
+.btn-site:active {
+    opacity: 0.85;
+}
+
+.btn-site:focus-visible {
+    outline: 3px solid var(--dorato_medio);
+    outline-offset: 2px;
+}
+
+.cta-section .btn-site {
+    border-color: #fff;
+    color: #fff;
+    background-color: transparent;
+}
+
+.cta-section .btn-site:hover,
+.cta-section .btn-site:focus {
+    background-color: #fff;
+    color: var(--blu_scuro);
 }
