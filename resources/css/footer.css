@@ -39,7 +39,7 @@
 
 .footer-social a:hover {
     background-color: rgba(197, 160, 89, 0.12);
-    color: #fff;
+    color: var(--dorato_chiaro);
     border-color: rgba(197, 160, 89, 0.45);
 }
 
@@ -101,7 +101,6 @@
 .footer-powered {
     margin-top: 0.55rem;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
 }
 
 .footer-powered a {
@@ -111,7 +110,7 @@
 }
 
 .footer-powered a:hover {
-    color: #fff;
+    color: var(--dorato_chiaro);
 }
 
 @media (max-width: 767.98px) {

@@ -30,9 +30,9 @@
             <div class="col-lg-4 col-md-12">
                 <h5 class="footer-title">Contatti</h5>
                 <ul class="footer-contact">
-                    <li><i class="fas fa-map-marker-alt"></i> Via Roma, 1 - 00100 Roma (RM)</li>
-                    <li><i class="fas fa-phone"></i> +39 06 1234567</li>
-                    <li><i class="fas fa-envelope"></i> info@studilegaliuniti.it</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Via Simili n. 14, Catania</li>
+                    <li><i class="fas fa-phone"></i> +39 095 530951</li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:vallonelegal@gmail.com">vallonelegal@gmail.com</a></li>
                     <li><i class="fas fa-clock"></i> Lun - Ven: 9:00 - 18:00</li>
                 </ul>
             </div>

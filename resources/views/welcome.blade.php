@@ -1,5 +1,5 @@
-<x-layout title="Studio Legale | Consulenza Legale Specializzata - Studi Legali Consorziati"
-    :styles="['resources/css/welcome.css']">
+<x-layout title="Studio Legale | Consulenza Legale Specializzata - Studi Legali Consorziati" description="Gli Studi Legali Consorziati a Catania offrono consulenza legale specializzata in diritto civile, penale, amministrativo e del lavoro. Fondati nel 1998, siamo un punto di riferimento per privati, aziende e istituzioni in tutta la Sicilia. Contattaci per una consulenza personalizzata." keywords="studio legale catania, consulenza legale, avvocati catania, diritto civile, diritto penale, diritto amministrativo, diritto del lavoro, assistenza legale, consulenza legale sicilia"
+>
     <!-- HERO SECTION con Video Background -->
     <header class="hero-section">
         <video autoplay muted loop playsinline poster="img/fallback-hero.jpg" class="video-bg">
@@ -29,7 +29,7 @@
                 <p>Gli <strong>Studi Legali Consorziati a Catania</strong> rappresentano un punto di riferimento per chi
                     cerca <strong>assistenza legale qualificata a Catania e in tutta la Sicilia</strong>. Fondati nel
                     1998 dall’unione di avvocati con competenze complementari, offriamo consulenza e difesa legale in
-                    <strong>diritto civile, penale, amministrativo e internazionale</strong>. Il nostro studio legale a
+                    <strong>diritto civile, penale, amministrativo e del lavoro</strong>. Il nostro studio legale a
                     Catania supporta privati, aziende e istituzioni con un approccio professionale, trasparente e
                     orientato al risultato. Ogni pratica viene gestita con la massima attenzione, garantendo
                     <strong>riservatezza, tempestività e soluzioni personalizzate</strong>. Se cerchi un avvocato a

@@ -1,5 +1,9 @@
 @import "bootstrap";
 @import "navbar";
+@import "footer";
+@import "welcome";
+@import "contatti";
+
 
 :root {
     /* HEADER E TITOLI */
