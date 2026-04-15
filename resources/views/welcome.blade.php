@@ -62,7 +62,7 @@
             <h2 class="font-title text-white mb-3">Hai bisogno di assistenza legale?</h2>
             <p class="text-white-50 mb-4 font-body">Contattaci per una consulenza personalizzata. Il primo colloquio è
                 gratuito.</p>
-            <a href="#" class="btn btn-gold btn-lg">
+            <a href="{{ route('contatti') }}" class="btn btn-gold btn-lg">
                 <i class="fas fa-phone-alt me-2"></i>Contattaci Ora
             </a>
         </div>
