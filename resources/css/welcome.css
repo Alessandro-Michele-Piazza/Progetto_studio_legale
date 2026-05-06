@@ -83,7 +83,7 @@
 }
 
 .chi-siamo-text {
-    max-width: 80vw;
+    max-width: 92vw;
     margin-bottom: 2.5rem;
 }
 
@@ -214,6 +214,11 @@
     .latest-articles-grid {
         grid-template-columns: 1fr;
     }
+
+    .chi-siamo-text{
+        max-width: 95%;
+    }
+
 }
 
 .cta-section {
@@ -225,6 +230,8 @@
     .parallax-section {
         background-attachment: scroll;
     }
+    
+
 }
 
 @media (max-width: 768px) {

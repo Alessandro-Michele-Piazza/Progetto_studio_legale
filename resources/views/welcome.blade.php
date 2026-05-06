@@ -21,13 +21,13 @@
 
     <!-- CHI SIAMO -->
     <section id="chi-siamo" class="section-padding">
-        <div class="container">
+        <div class="container-fluid">
             <div class="chi-siamo-header">
                 <span class="section-label"><i class="fas fa-balance-scale me-2"></i>Chi Siamo</span>
                 <h2 class="section-title">Assistenza Legale Professionale a Catania</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="chi-siamo-text">
+            <div class="chi-siamo-text ">
                 <p>Gli <strong>Studi Legali Consorziati a Catania</strong> rappresentano un punto di riferimento per chi
                     cerca <strong>assistenza legale qualificata a Catania e in tutta la Sicilia</strong>. Fondati nel
                     1998 dall’unione di avvocati con competenze complementari, offriamo consulenza e difesa legale in

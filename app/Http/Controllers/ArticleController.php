@@ -148,10 +148,11 @@ class ArticleController extends Controller implements HasMiddleware
             ->get();
 
         $availablePublicationYears = $this->basePublishedArticlesQuery($category)
-            ->selectRaw('YEAR(published_at) as publication_year')
-            ->distinct()
-            ->orderByDesc('publication_year')
-            ->pluck('publication_year');
+            ->orderByDesc('published_at')
+            ->pluck('published_at')
+            ->map(fn ($publishedAt) => (int) date('Y', strtotime($publishedAt)))
+            ->unique()
+            ->values();
 
         $availableAuthors = User::query()
             ->whereHas('articles', function (Builder $query) use ($category) {
