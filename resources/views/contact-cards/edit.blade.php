@@ -2,10 +2,11 @@
     title="Modifica Card Contatti | Studi Legali Consorziati"
     description="Modifica i dati della card contatti selezionata."
     robots="noindex, nofollow"
+    :styles="['resources/css/contact-cards.css']"
 >
-    <section class="py-5" style="margin-top: 70px;">
-        <div class="container" style="max-width: 900px;">
-            <a href="{{ route('contact-cards.index') }}" class="btn btn-link ps-0 mb-3">&larr; Torna alla gestione contatti</a>
+    <section class="py-5 contact-cards-section">
+        <div class="container contact-cards-edit__container">
+            <a href="{{ route('contact-cards.index') }}" class="btn-site my-5">&larr; Torna alla gestione contatti</a>
 
             <div class="bg-white border p-4 p-md-5">
                 <h1 class="font-title mb-2">Modifica area: {{ $contactCard->area_name }}</h1>
@@ -198,66 +199,6 @@
     </section>
 
     @push('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const wrapper = document.getElementById('professionals-wrapper');
-                const addButton = document.getElementById('add-professional-row');
-                let nextIndex = wrapper.querySelectorAll('.professional-row').length;
-
-                const createRow = function (index) {
-                    const container = document.createElement('div');
-                    container.className = 'border rounded p-3 professional-row';
-                    container.setAttribute('data-index', String(index));
-
-                    container.innerHTML = `
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <strong>Avvocato #${index + 1}</strong>
-                            <button type="button" class="btn btn-sm btn-outline-danger remove-professional-row">Rimuovi</button>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Nome</label>
-                            <input type="text" name="professionals[${index}][professional_name]" class="form-control" required>
-                        </div>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Telefono</label>
-                                <input type="text" name="professionals[${index}][phone]" class="form-control" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Email</label>
-                                <input type="email" name="professionals[${index}][email]" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="mb-0">
-                            <label class="form-label">Sede</label>
-                            <input type="text" name="professionals[${index}][sede]" class="form-control" required>
-                        </div>
-                    `;
-
-                    return container;
-                };
-
-                addButton.addEventListener('click', function () {
-                    wrapper.appendChild(createRow(nextIndex));
-                    nextIndex += 1;
-                });
-
-                wrapper.addEventListener('click', function (event) {
-                    const trigger = event.target;
-
-                    if (!trigger.classList.contains('remove-professional-row')) {
-                        return;
-                    }
-
-                    const rows = wrapper.querySelectorAll('.professional-row');
-
-                    if (rows.length <= 1) {
-                        return;
-                    }
-
-                    trigger.closest('.professional-row')?.remove();
-                });
-            });
-        </script>
+        @vite('resources/js/contact-card-professionals.js')
     @endpush
 </x-layout>

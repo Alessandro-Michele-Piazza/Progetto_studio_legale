@@ -84,7 +84,7 @@
                                 <div class="col-12">
                                     <label for="body" class="article-editor__label">Contenuto</label>
                                     <textarea class="article-editor__control article-editor__control--textarea @error('body') article-editor__control--error @enderror"
-                                              id="body" name="body" rows="15">{{ old('body', $article->body) }}</textarea>
+                                              id="body" name="body" rows="15" data-article-editor>{{ old('body', $article->body) }}</textarea>
                                     @error('body')
                                         <span class="article-editor__error">{{ $message }}</span>
                                     @enderror
@@ -107,42 +107,7 @@
     @push('scripts')
         <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.css">
         <script src="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.umd.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const {
-                    ClassicEditor, Essentials, Paragraph, Bold, Italic, Underline,
-                    Link, BlockQuote, List, Heading, Undo
-                } = CKEDITOR;
-
-                ClassicEditor
-                    .create(document.querySelector('#body'), {
-                        licenseKey: 'GPL',
-                        language: 'it',
-                        plugins: [
-                            Essentials, Paragraph, Bold, Italic, Underline,
-                            Link, BlockQuote, List, Heading, Undo
-                        ],
-                        toolbar: [
-                            'heading', '|',
-                            'bold', 'italic', 'underline', '|',
-                            'link', 'blockQuote', '|',
-                            'bulletedList', 'numberedList', '|',
-                            'undo', 'redo'
-                        ],
-                        heading: {
-                            options: [
-                                { model: 'paragraph', title: 'Paragrafo', class: 'ck-heading_paragraph' },
-                                { model: 'heading2', view: 'h2', title: 'Titolo 2', class: 'ck-heading_heading2' },
-                                { model: 'heading3', view: 'h3', title: 'Titolo 3', class: 'ck-heading_heading3' },
-                                { model: 'heading4', view: 'h4', title: 'Titolo 4', class: 'ck-heading_heading4' }
-                            ]
-                        }
-                    })
-                    .catch(function (error) {
-                        console.error(error);
-                    });
-            });
-        </script>
+        @vite('resources/js/article-editor.js')
     @endpush
 
 </x-layout>

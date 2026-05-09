@@ -33,7 +33,7 @@
                         <div class="section-divider mx-auto"></div>
                     </div>
 
-                    <div class=" text-center"> <!-- Aggiunto text-center per eleganza -->
+                    <div class="text-start text-md-center"> 
                         <p class="lead text-muted mb-0">
                             Gli <strong class="text-dark">Studi Legali Consorziati a Catania</strong> rappresentano
                             un punto di riferimento per chi

@@ -1,0 +1,430 @@
+/* ============================================================
+   ARTICLES - LISTING
+   ============================================================ */
+
+/* Hero / Header */
+.articles-hero {
+    padding: 7rem 0 3rem;
+    background-color: var(--bianco_sfondo);
+}
+
+/* Listing filters */
+.article-filters {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.article-filters__categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.article-filters__category-link {
+    display: inline-block;
+    font-family: var(--opensans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.45rem 1.1rem;
+    border: 1.5px solid #cdd5de;
+    color: var(--nero_testo);
+    transition: all 0.25s ease;
+}
+
+.article-filters__category-link:hover {
+    border-color: var(--dorato_medio);
+    color: var(--dorato_medio);
+}
+
+.article-filters__category-link--active {
+    background-color: var(--blu_scuro);
+    border-color: var(--blu_scuro);
+    color: #fff;
+}
+
+.article-filters__category-link--active:hover {
+    background-color: var(--blu_scuro);
+    border-color: var(--blu_scuro);
+    color: #fff;
+}
+
+.article-filters__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.65rem;
+    width: 100%;
+}
+
+/* Top row: search (left) + year/author (right) */
+.article-filters__top-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.article-filters__search-wrap {
+    flex: 1 1 16rem;
+    min-width: 14rem;
+}
+
+.article-filters__search-input-wrap {
+    position: relative;
+}
+
+.article-filters__search-input {
+    width: 100%;
+    min-height: 2.45rem;
+    padding: 0.5rem 2.7rem 0.5rem 0.75rem;
+    border: 1.5px solid #cdd5de;
+    background-color: #fff;
+    color: var(--nero_testo);
+    font-family: var(--opensans);
+    font-size: 0.84rem;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.article-filters__search-input:focus {
+    outline: none;
+    border-color: var(--dorato_medio);
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.14);
+}
+
+.article-filters__search-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2.45rem;
+    background: none;
+    border: none;
+    color: var(--blu_scuro);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.article-filters__search-btn:hover {
+    color: var(--dorato_medio);
+}
+
+.article-filters__right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.65rem;
+}
+
+.article-filters__field {
+    min-width: 9.5rem;
+}
+
+.article-filters__label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-family: var(--opensans);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--blu_scuro);
+}
+
+.article-filters__select {
+    width: 100%;
+    min-height: 2.45rem;
+    padding: 0.5rem 0.75rem;
+    border: 1.5px solid #cdd5de;
+    background-color: #fff;
+    color: var(--nero_testo);
+    font-family: var(--opensans);
+    font-size: 0.84rem;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.article-filters__select:focus {
+    outline: none;
+    border-color: var(--dorato_medio);
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.14);
+}
+
+.article-filters__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.article-filters__submit,
+.article-filters__reset {
+    min-height: 2.45rem;
+    padding: 0.5rem 0.85rem;
+    border: 1.5px solid var(--blu_scuro);
+    background-color: #fff;
+    color: var(--blu_scuro);
+    font-family: var(--opensans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.article-filters__submit {
+    background-color: var(--blu_scuro);
+    color: #fff;
+}
+
+.article-filters__submit:hover,
+.article-filters__reset:hover {
+    background-color: var(--blu_chiaro);
+    border-color: var(--blu_chiaro);
+    color: #fff;
+}
+
+/* Article grid */
+.articles-list-section {
+    padding: 0 0 5rem;
+    background-color: var(--bianco_sfondo);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.articles-empty {
+    text-align: center;
+    padding: 4rem 0;
+    font-size: 1.05rem;
+    color: #888;
+}
+
+/* Article card */
+.article-card {
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 2px 16px rgba(26, 60, 90, 0.06);
+    border-top: 3px solid transparent;
+    transition:
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    box-shadow: 0 6px 28px rgba(26, 60, 90, 0.1);
+    border-top-color: var(--dorato_medio);
+    transform: translateY(-10px);
+}
+
+.article-card__category {
+    margin-bottom: 0.75rem;
+}
+
+.article-card__category a {
+    font-family: var(--opensans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dorato_medio);
+    transition: color 0.2s ease;
+}
+
+.article-card__category a:hover {
+    color: var(--blu_scuro);
+}
+
+.article-card__title {
+    font-family: var(--playfair);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    color: var(--blu_scuro);
+}
+
+.article-card__title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.article-card__title a:hover {
+    color: var(--dorato_medio);
+}
+
+.article-card__excerpt {
+    font-family: var(--opensans);
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+}
+
+.article-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-family: var(--opensans);
+    font-size: 0.78rem;
+    color: #999;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.article-card__meta i {
+    color: var(--dorato_medio);
+}
+
+/* Card button */
+.article-card .btn-site {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+/* Pagination */
+.article-pagination {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+#article-pagination .article-pagination__list {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#article-pagination .article-pagination__link {
+    font-family: var(--opensans);
+    font-size: 0.85rem;
+    color: var(--blu_scuro);
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.95rem;
+    background-color: #fff;
+    border: 1px solid #cdd5de;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+#article-pagination .article-pagination__link:hover {
+    background-color: var(--blu_chiaro);
+    border-color: var(--blu_chiaro);
+    color: #fff;
+}
+
+#article-pagination .article-pagination__link--active {
+    background-color: var(--blu_scuro);
+    border-color: var(--blu_scuro);
+    color: #fff;
+}
+
+#article-pagination .article-pagination__link--disabled {
+    color: #b5bcc6;
+    background-color: #f5f7f9;
+    border-color: #dfe5ec;
+    pointer-events: none;
+}
+
+#article-pagination .article-pagination__link--dots {
+    min-width: auto;
+    padding: 0.35rem 0.15rem;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+#article-pagination .article-pagination__icon {
+    font-size: 0.8rem;
+}
+
+/* Admin bar */
+.articles-admin-bar {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
+/* Responsive listing */
+@media (max-width: 991.98px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article-filters {
+        width: 100%;
+    }
+
+    .article-filters__toolbar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .articles-hero {
+        padding: 5.5rem 0 2rem;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .article-card {
+        padding: 1.5rem;
+    }
+
+    .article-filters__field,
+    .article-filters__actions {
+        width: 100%;
+    }
+
+    .article-filters__actions {
+        justify-content: flex-start;
+    }
+
+    #article-pagination .article-pagination__list {
+        gap: 0.25rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #article-pagination .article-pagination__link {
+        min-width: 2.5rem;
+        min-height: 2.5rem;
+        padding: 0.5rem 0.8rem;
+    }
+}

@@ -7,8 +7,11 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/css/auth.css',
+                'resources/css/contact-cards.css',
                 'resources/js/app.js',
                 'resources/js/auth-password-toggle.js',
+                'resources/js/article-editor.js',
+                'resources/js/contact-card-professionals.js',
             ],
             refresh: true,
         }),

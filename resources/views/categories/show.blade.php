@@ -1,60 +1,113 @@
 <x-layout :title="$category->name . ' | Studi Legali Consorziati'"
     :description="\Illuminate\Support\Str::limit(strip_tags($category->description), 160)">
 
-    {{-- HERO CATEGORIA --}}
-    <section class="category-hero" aria-label="Area di intervento">
-        <div class="container">
-            <span class="section-label">Area di intervento</span>
-            <h1 class="section-title category-hero__title">{{ $category->name }}</h1>
-            <div class="section-divider"></div>
-            <p class="category-hero__description">{{ $category->description }}</p>
-        </div>
-    </section>
+    <div class="category-page">
 
-    {{-- AVVOCATO DI RIFERIMENTO --}}
-    <section class="category-lawyer" aria-label="Avvocato di riferimento">
-        <div class="container">
-            <div class="category-lawyer__card">
-                <div class="category-lawyer__avatar" aria-hidden="true">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <div class="category-lawyer__info">
-                    <span class="section-label">Il tuo riferimento legale</span>
-                    <h2 class="category-lawyer__name">{{ $category->lawyer_name }}</h2>
-                    <p class="category-lawyer__spec">{{ $category->lawyer_specialization }}</p>
-                    <p class="category-lawyer__bio">{{ $category->lawyer_bio }}</p>
+        {{-- HERO CATEGORIA --}}
+        <section class="category-hero" aria-label="{{ $category->name }}">
+            <div class="container">
+                <div class="category-hero__panel">
+                    <div class="category-hero__badge-line"></div>
+                    <h1 class="category-hero__title">{{ $category->name }}</h1>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {{-- ULTIMI ARTICOLI --}}
-    <section class="category-articles" aria-label="Articoli della categoria">
-        <div class="container">
-            <span class="section-label">
-                <i class="fas fa-newspaper me-2" aria-hidden="true"></i>Approfondimenti
-            </span>
-            <h2 class="section-title">Ultimi articoli</h2>
-            <div class="section-divider"></div>
+        {{-- AVVOCATO DI RIFERIMENTO --}}
+        <section class="category-lawyer" aria-label="I tuoi riferimenti legali">
+            <div class="container">
+                @php
+                    $professionals = $contactCard?->professionals ?? collect();
+                @endphp
 
-            @if($articles->isEmpty())
-                <p class="articles-empty">Nessun articolo disponibile per questa categoria.</p>
-            @else
-                <div class="articles-grid">
-                    @foreach($articles as $article)
-                        <x-article-card :article="$article" />
-                    @endforeach
-                </div>
-            @endif
+                @if($professionals->isNotEmpty())
+                    <div class="category-section-heading">
+                        <span class="section-label">I tuoi riferimenti legali</span>
+                        <h2 class="section-title category-lawyer__title">Professionisti dedicati a {{ $category->name }}
+                        </h2>
+                        <div class="section-divider"></div>
+                    </div>
 
-            <div class="category-articles__cta">
-                <a href="{{ route('articoli.categoria', $category) }}" class="btn-site">
-                    <i class="fas fa-th-list me-2" aria-hidden="true"></i>
-                    Tutti gli articoli
-                </a>
+                    <div class="category-lawyers__grid">
+                        @foreach($professionals as $professional)
+                            <article class="category-lawyer__card">
+                                {{-- Icona/Avatar --}}
+                                <div class="category-lawyer__avatar">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+
+                                <div class="category-lawyer__info">
+                                    {{-- Nome con altezza minima per allineamento --}}
+                                    <h2 class="category-lawyer__name">{{ $professional->professional_name }}</h2>
+                                    <p class="category-lawyer__spec">{{ $category->name }}</p>
+
+                                    {{-- Dettagli testuali (no link) --}}
+                                    <div class="category-lawyer__details">
+                                        @if($professional->sede)
+                                            <div class="category-lawyer__detail">
+                                                <i class="fas fa-location-dot"></i>
+                                                <span>{{ $professional->sede }}</span>
+                                            </div>
+                                        @endif
+
+                                        @if($professional->phone)
+                                            <div class="category-lawyer__detail">
+                                                <i class="fas fa-phone"></i>
+                                                <span>{{ $professional->phone }}</span>
+                                            </div>
+                                        @endif
+
+                                        @if($professional->email)
+                                            <div class="category-lawyer__detail">
+                                                <i class="fas fa-envelope"></i>
+                                                <span>{{ $professional->email }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+
+                    @auth
+                        <div class="category-lawyers__actions">
+                            <a href="{{ route('contact-cards.edit', $contactCard) }}" class="btn-site">Aggiungi avvocato</a>
+                        </div>
+                    @endauth
+                @endif
             </div>
-        </div>
-    </section>
+        </section>
 
+        {{-- ULTIMI ARTICOLI --}}
+        <section class="category-articles" aria-label="Articoli della categoria">
+            <div class="container">
+                <div class="category-section-heading">
+                    <span class="section-label">
+                        <i class="fas fa-newspaper me-2" aria-hidden="true"></i>Approfondimenti
+                    </span>
+                    <h2 class="section-title">Ultimi articoli</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                @if($articles->isEmpty())
+                    <p class="articles-empty">Nessun articolo disponibile per questa categoria.</p>
+                @else
+                    <div class="articles-grid category-articles__grid">
+                        @foreach($articles as $article)
+                            <x-article-card :article="$article" />
+                        @endforeach
+                    </div>
+                @endif
+
+                <div class="category-articles__cta">
+                    <a href="{{ route('articoli.categoria', $category) }}" class="btn-site">
+                        <i class="fas fa-th-list me-2" aria-hidden="true"></i>
+                        Tutti gli articoli
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
 </x-layout>

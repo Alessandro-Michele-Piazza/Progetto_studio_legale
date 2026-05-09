@@ -36,7 +36,9 @@ class PublicController extends Controller
 
         if (Schema::hasTable('contact_cards')) {
             ContactCard::ensureFixedCards();
-            $cards = ContactCard::orderedList();
+            $cards = ContactCard::with('professionals')
+                ->orderBy('area_name', 'asc')
+                ->get();
         }
 
         return view('contatti', compact('cards'));

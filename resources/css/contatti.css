@@ -1,119 +1,205 @@
 /* ============================================================
-CONTATTI.CSS — Design Professionale Unificato
-============================================================ */
-.section-label {
-display: inline-block;
-font-family: var(--opensans);
-font-size: 0.75rem;
-font-weight: 700;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(--dorato_medio);
-margin-bottom: 1rem;
-}
+   CONTATTI.CSS — Struttura Allineata + Animazione Logo
+   ============================================================ */
+
+/* HERO SECTION */
 .contatti-hero {
-background-color: var(--blu_scuro);
-padding: 7rem 0 5rem;
-text-align: center;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+    color: #ffffff;
+    text-align: center;
 }
+
+.contatti-hero .section-label {
+    font-family: var(--opensans, sans-serif);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #b89b5e;
+    margin-bottom: 1rem;
+    display: block;
+}
+
 .contatti-hero__title {
-font-family: var(--playfair);
-font-size: clamp(2.5rem, 6vw, 3.5rem);
-color: #ffffff;
-margin-bottom: 1rem;
+    font-family: var(--playfair, serif);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
+
 .contatti-hero__subtitle {
-font-family: var(--opensans);
-font-size: 1.1rem;
-color: rgba(255, 255, 255, 0.7);
-max-width: 600px;
-margin: 0 auto;
+    font-family: var(--opensans, sans-serif);
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
-/* SEZIONE CARD */
+
+/* GRID PRINCIPALE */
 .contatti-main-section {
-padding: 5rem 0;
-background-color: #f8f9fa;
+    padding: 5rem 0;
 }
+
 .contatti-info-grid {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem; /* Ottimizzato per 4 colonne */
+    align-items: stretch;
 }
-/* CARD UNIFICATA */
+
+/* CARD */
 .contatti-info-card {
-background-color: #ffffff;
-padding: 2.5rem 2rem;
-display: flex;
-flex-direction: column;
-border: 1px solid #e0e0e0;
-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-height: 100%;
+    background-color: #ffffff;
+    padding: 2.5rem 1.2rem;
+    border: 1px solid #ececec;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    text-align: center;
 }
+
 .contatti-info-card:hover {
-border-color: var(--dorato_medio);
-box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: #b89b5e;
 }
-/* ICONA E TITOLO */
-.contatti-info-card__icon {
-font-size: 2rem;
-color: var(--blu_scuro);
-margin-bottom: 1.5rem;
+
+/* --- ANIMAZIONE ICONA (IL LOGO CHE GIRA) --- */
+.card-icon {
+    font-size: 2.8rem;
+    color: #b89b5e;
+    height: 70px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Transizione per la rotazione */
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.contatti-info-card__label {
-font-family: var(--playfair);
-font-size: 1.4rem;
-font-weight: 700;
-color: var(--blu_scuro);
-margin-bottom: 0.8rem;
-display: block;
+
+.contatti-info-card:hover .card-icon {
+    transform: rotateY(360deg); /* EFFETTO ROTAZIONE */
 }
-.contatti-info-card__text {
-font-family: var(--opensans);
-font-size: 0.95rem;
-color: #555;
-line-height: 1.6;
-margin-bottom: 2rem;
+
+/* --- BLOCCO TITOLO (ALTEZZA FISSA PER ALLINEARE) --- */
+.card-header-top {
+    height: 220px; /* Assicura che la riga divisoria sia uguale per tutti */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-/* INFO AVVOCATO (Integrate senza box separato) */
-.contatti-info-card__professional {
-margin-top: auto;
-padding-top: 1.5rem;
-border-top: 2px solid #f0f0f0;
+
+.card-title {
+    font-family: var(--playfair, serif);
+    font-size: 1.3rem; /* Dimensione ideale per "Diritto Amministrativo" */
+    font-weight: 700;
+    color: #1a3a52;
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
+
+.card-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.card-divider {
+    border: 0;
+    border-top: 1px solid #f0f0f0;
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+/* BLOCCO PROFESSIONISTI */
+.card-professionals {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.professional-item {
+    margin-bottom: 1.5rem;
+}
+
+.professional-item:last-child {
+    margin-bottom: 0;
+}
+
 .professional-name {
-font-family: var(--opensans);
-font-size: 0.8rem;
-font-weight: 800;
-text-transform: uppercase;
-letter-spacing: 1px;
-color: var(--dorato_medio);
-margin-bottom: 1rem;
-display: block;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #1a3a52;
+    margin-bottom: 0.6rem;
+    display: block;
 }
+
 .professional-detail {
-display: flex;
-align-items: center;
-gap: 0.8rem;
-margin-bottom: 0.6rem;
-font-family: var(--opensans);
-font-size: 0.9rem;
-color: var(--blu_scuro);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    color: #444;
 }
+
 .professional-detail i {
-color: var(--dorato_medio);
-width: 16px;
-font-size: 0.85rem;
+    color: #b89b5e;
+    width: 16px;
+    text-align: center;
 }
+
 .professional-detail a {
-color: inherit;
-text-decoration: none;
-font-weight: 600;
+    text-decoration: none;
+    color: inherit;
 }
+
 /* RESPONSIVE */
 @media (max-width: 1200px) {
-.contatti-info-grid { grid-template-columns: repeat(2, 1fr); }
+    .contatti-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    .card-header-top {
+        height: auto;
+        margin-bottom: 1rem;
+    }
 }
+
+@media (max-width: 768px) {
+    .contatti-info-card {
+        text-align: center;
+        padding: 2.3rem 1.35rem;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .card-professionals {
+        text-align: center;
+    }
+
+    .professional-name {
+        font-size: 0.95rem;
+    }
+
+    .professional-detail {
+        justify-content: center;
+        font-size: 0.95rem;
+    }
+}
+
 @media (max-width: 650px) {
-.contatti-info-grid { grid-template-columns: 1fr; }
-.contatti-hero__title { font-size: 2.2rem; }
+    .contatti-info-grid {
+        grid-template-columns: 1fr;
+    }
 }

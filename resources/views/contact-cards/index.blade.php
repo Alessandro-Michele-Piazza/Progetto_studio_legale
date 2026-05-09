@@ -2,8 +2,9 @@
     title="Gestione Contatti | Studi Legali Consorziati"
     description="Dashboard per la modifica delle 4 card contatti fisse."
     robots="noindex, nofollow"
+    :styles="['resources/css/contact-cards.css']"
 >
-    <section class="py-5" style="margin-top: 70px;">
+    <section class="py-5 contact-cards-section">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
                 <div>

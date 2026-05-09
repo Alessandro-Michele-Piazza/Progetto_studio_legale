@@ -36,7 +36,13 @@
     </div>
     <div class="footer-bottom">
         <div class="container">
-            <p>&copy; {{ date('Y') }} Studi Legali Consorziati &mdash; P.IVA 00000000000 &mdash; Tutti i diritti riservati</p>
+            <p class="footer-legal">
+                <span class="footer-legal__brand">&copy; {{ date('Y') }} Studi Legali Consorziati</span>
+                <span class="footer-legal__separator" aria-hidden="true">&mdash;</span>
+                <span class="footer-legal__vat">P.IVA 00000000000</span>
+                <span class="footer-legal__separator" aria-hidden="true">&mdash;</span>
+                <span class="footer-legal__rights">Tutti i diritti sono riservati</span>
+            </p>
             <p class="footer-powered">POWERED BY: <a href="https://www.linkedin.com/in/alessandro-michele-piazza-13b751171/" target="_blank" rel="noopener noreferrer">Alessandro Michele Piazza</a></p>
         </div>
     </div>

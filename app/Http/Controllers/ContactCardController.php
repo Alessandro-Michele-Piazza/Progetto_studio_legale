@@ -14,7 +14,9 @@ class ContactCardController extends Controller
     {
         ContactCard::ensureFixedCards();
 
-        $cards = ContactCard::orderedList();
+        $cards = ContactCard::with('professionals')
+            ->orderBy('area_name', 'asc')
+            ->get();
 
         return view('contact-cards.index', compact('cards'));
     }
