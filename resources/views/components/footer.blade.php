@@ -14,8 +14,8 @@
                 <ul class="footer-links">
                     @foreach($navCategories ?? [] as $category)
                         <li>
-                            <a href="{{ route('categories.show', $category) }}">
-                                <i class="fas fa-chevron-right"></i> {{ $category->name }}
+                            <a href="{{ route('categories.show', data_get($category, 'slug')) }}">
+                                <i class="fas fa-chevron-right"></i> {{ data_get($category, 'name') }}
                             </a>
                         </li>
                     @endforeach

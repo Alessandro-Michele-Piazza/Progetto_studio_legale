@@ -4,13 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactCardController;
 use App\Http\Controllers\ProfessionalProfileController;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/contatti', [PublicController::class, 'contact'])->name('contatti');
-Route::post('/contatti', [ContactController::class, 'send'])->name('contatti.send');
 
 // Categorie
 Route::get('/categorie/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property string|null $description
  */
 class Category extends Model
 {

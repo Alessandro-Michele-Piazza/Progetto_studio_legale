@@ -38,7 +38,6 @@ class ContactCardController extends Controller
 
         DB::transaction(function () use ($contactCard, $request, $data): void {
             $contactCard->update([
-                'description' => $data['description'],
                 'updated_by' => $request->user()->id,
             ]);
 

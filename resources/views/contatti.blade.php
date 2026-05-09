@@ -25,7 +25,6 @@
                                 <i class="fas {{ $card->icon_class }}" aria-hidden="true"></i>
                             </div>
                             <h2 class="card-title">{{ $card->area_name }}</h2>
-                            <p class="card-description">{{ $card->description }}</p>
                         </div>
 
                         <!-- LINEA DIVISORIA -->

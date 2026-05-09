@@ -86,7 +86,7 @@
 
 /* --- BLOCCO TITOLO (ALTEZZA FISSA PER ALLINEARE) --- */
 .card-header-top {
-    height: 220px; /* Assicura che la riga divisoria sia uguale per tutti */
+    height: 170px; /* Assicura che la riga divisoria sia uguale per tutti */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,12 +99,6 @@
     color: #1a3a52;
     margin-bottom: 1rem;
     line-height: 1.2;
-}
-
-.card-description {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.5;
 }
 
 .card-divider {
@@ -177,11 +171,6 @@
 
     .card-title {
         font-size: 1.4rem;
-    }
-
-    .card-description {
-        font-size: 1rem;
-        line-height: 1.6;
     }
 
     .card-professionals {

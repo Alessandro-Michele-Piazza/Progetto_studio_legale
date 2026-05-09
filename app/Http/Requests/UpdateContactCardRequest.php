@@ -14,7 +14,6 @@ class UpdateContactCardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => ['required', 'string', 'max:2000'],
             'professionals' => ['required', 'array', 'min:1'],
             'professionals.*.professional_name' => ['required', 'string', 'max:150'],
             'professionals.*.phone' => ['required', 'string', 'max:50'],
@@ -26,8 +25,6 @@ class UpdateContactCardRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'description.required' => 'La descrizione è obbligatoria.',
-            'description.max' => 'La descrizione non può superare i 2000 caratteri.',
             'professionals.required' => 'Inserisci almeno un avvocato per la card.',
             'professionals.min' => 'Inserisci almeno un avvocato per la card.',
             'professionals.*.professional_name.required' => 'Il nome dell\'avvocato è obbligatorio.',

@@ -7,33 +7,37 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property int $id
+ * @property string $area_name
+ * @property string $icon_class
+ * @property string $description
+ * @property int|null $updated_by
+ * @property-read Collection<int, ContactCardProfessional> $professionals
+ */
 class ContactCard extends Model
 {
     public const FIXED_CARDS = [
         'Diritto Civile' => [
             'icon_class' => 'fa-balance-scale',
-            'description' => 'Consulenza e assistenza in materia di diritto civile.',
             'professional_name' => 'Avv. Nome Cognome',
             'phone' => '+39 095 000000',
             'email' => 'civile@studiolegale.it',
         ],
         'Diritto Penale' => [
             'icon_class' => 'fa-gavel',
-            'description' => 'Difesa e tutela legale in ambito penale.',
             'professional_name' => 'Avv. Nome Cognome',
             'phone' => '+39 095 000001',
             'email' => 'penale@studiolegale.it',
         ],
         'Diritto Amministrativo' => [
             'icon_class' => 'fa-landmark',
-            'description' => 'Supporto legale nei rapporti con la pubblica amministrazione.',
             'professional_name' => 'Avv. Nome Cognome',
             'phone' => '+39 095 000002',
             'email' => 'amministrativo@studiolegale.it',
         ],
         'Diritto del Lavoro' => [
             'icon_class' => 'fa-briefcase',
-            'description' => 'Assistenza per controversie e consulenza in diritto del lavoro.',
             'professional_name' => 'Avv. Nome Cognome',
             'phone' => '+39 095 000003',
             'email' => 'lavoro@studiolegale.it',
@@ -68,7 +72,15 @@ class ContactCard extends Model
         foreach (self::FIXED_CARDS as $areaName => $defaults) {
             $card = self::query()->firstOrCreate(
                 ['area_name' => $areaName],
-                $defaults + ['updated_by' => null]
+                [
+                    'icon_class' => $defaults['icon_class'],
+                    // Legacy columns are kept in DB schema, but no longer used in UI logic.
+                    'description' => '',
+                    'professional_name' => $defaults['professional_name'],
+                    'phone' => $defaults['phone'],
+                    'email' => $defaults['email'],
+                    'updated_by' => null,
+                ]
             );
 
             if (! $card->professionals()->exists()) {

@@ -80,7 +80,6 @@ test('authenticated user can update one fixed contact card and data persists', f
     $card = ContactCard::query()->where('area_name', 'Diritto Civile')->firstOrFail();
 
     $response = $this->actingAs($user)->put(route('contact-cards.update', $card), [
-        'description' => 'Assistenza completa in diritto civile e contrattualistica.',
         'professionals' => [
             [
                 'professional_name' => 'Avv. Anna Maria Bianchi',
@@ -108,7 +107,6 @@ test('authenticated user can update one fixed contact card and data persists', f
     $this->assertDatabaseHas('contact_cards', [
         'id' => $card->id,
         'area_name' => 'Diritto Civile',
-        'description' => 'Assistenza completa in diritto civile e contrattualistica.',
         'updated_by' => $user->id,
     ]);
 
