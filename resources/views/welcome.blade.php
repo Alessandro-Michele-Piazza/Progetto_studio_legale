@@ -21,23 +21,39 @@
 
     <!-- CHI SIAMO -->
     <section id="chi-siamo" class="section-padding">
-        <div class="container-fluid">
-            <div class="chi-siamo-header">
-                <span class="section-label"><i class="fas fa-balance-scale me-2"></i>Chi Siamo</span>
-                <h2 class="section-title">Assistenza Legale Professionale a Catania</h2>
-                <div class="section-divider"></div>
-            </div>
-            <div class="chi-siamo-text ">
-                <p>Gli <strong>Studi Legali Consorziati a Catania</strong> rappresentano un punto di riferimento per chi
-                    cerca <strong>assistenza legale qualificata a Catania e in tutta la Sicilia</strong>. Fondati nel
-                    1998 dall’unione di avvocati con competenze complementari, offriamo consulenza e difesa legale in
-                    <strong>diritto civile, penale, amministrativo e del lavoro</strong>. Il nostro studio legale a
-                    Catania supporta privati, aziende e istituzioni con un approccio professionale, trasparente e
-                    orientato al risultato. Ogni pratica viene gestita con la massima attenzione, garantendo
-                    <strong>riservatezza, tempestività e soluzioni personalizzate</strong>. Se cerchi un avvocato a
-                    Catania affidabile ed esperto, il nostro team è pronto ad assisterti in ogni fase del procedimento
-                    legale.
-                </p>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-12"> <!-- Allargato leggermente per dare respiro al testo -->
+                    <div class="chi-siamo-header text-center mb-4">
+                        <span
+                            class="section-label d-inline-flex align-items-center px-4 py-2 rounded-pill bg-light mb-3">
+                            <i class="fas fa-balance-scale me-2"></i>Chi Siamo
+                        </span>
+                        <h2 class="section-title mb-4">Assistenza Legale Professionale a Catania</h2>
+                        <div class="section-divider mx-auto"></div>
+                    </div>
+
+                    <div class=" text-center"> <!-- Aggiunto text-center per eleganza -->
+                        <p class="lead text-muted mb-0">
+                            Gli <strong class="text-dark">Studi Legali Consorziati a Catania</strong> rappresentano
+                            un punto di riferimento per chi
+                            cerca <strong class="text-dark">assistenza legale qualificata a Catania e in tutta la
+                                Sicilia</strong>. Fondati nel
+                            1998 dall'unione di avvocati con competenze complementari, offriamo consulenza e difesa
+                            legale in
+                            <strong class="text-dark">diritto civile, penale, amministrativo e del lavoro</strong>.
+                            Il nostro studio legale a
+                            Catania supporta privati, aziende e istituzioni con un approccio professionale,
+                            trasparente e
+                            orientato al risultato. Ogni pratica viene gestita con la massima attenzione, garantendo
+                            <strong class="text-dark">riservatezza, tempestività e soluzioni
+                                personalizzate</strong>. Se cerchi un avvocato a
+                            Catania affidabile ed esperto, il nostro team è pronto ad assisterti in ogni fase del
+                            procedimento
+                            legale.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -78,17 +94,5 @@
             </div>
         </section>
     @endif
-
-    <!-- CTA CONTATTI -->
-    <section class="cta-section">
-        <div class="container text-center">
-            <h2 class="font-title text-white mb-3">Hai bisogno di assistenza legale?</h2>
-            <p class="text-white-50 mb-4 font-body">Contattaci per una consulenza personalizzata. Il primo colloquio è
-                gratuito.</p>
-            <a href="{{ route('contatti') }}" class="btn-site">
-                <i class="fas fa-phone-alt me-2  "></i>Contattaci Ora
-            </a>
-        </div>
-    </section>
 
 </x-layout>

@@ -5,6 +5,7 @@
 @import "contatti";
 @import "articles";
 @import "bottoni";
+@import "scrollbar";
 
 :root {
     /* HEADER E TITOLI */

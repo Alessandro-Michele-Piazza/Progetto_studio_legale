@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ArticleController extends Controller implements HasMiddleware
@@ -49,20 +48,21 @@ class ArticleController extends Controller implements HasMiddleware
     public function create(): View
     {
         $categories = Category::orderBy('name')->get();
+        $authors = User::query()
+            ->orderBy('name')
+            ->get(['id', 'name']);
 
-        return view('articles.create', compact('categories'));
+        return view('articles.create', compact('categories', 'authors'));
     }
 
     public function store(StoreArticleRequest $request): RedirectResponse
     {
         $validated = $request->validated();
-        $user = Auth::user();
-
-        assert($user instanceof User);
+        $author = User::query()->findOrFail($validated['author_id']);
 
         $sanitizedBody = $this->articleService->sanitizeHtml($validated['body']);
 
-        $article = $user->articles()->create([
+        $article = $author->articles()->create([
             'title'        => $validated['title'],
             'slug'         => $this->articleService->generateSlug($validated['title']),
             'body'         => $sanitizedBody,

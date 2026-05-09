@@ -50,6 +50,15 @@ class Article extends Model
 
     public function excerpt(int $length = 160): string
     {
-        return \Illuminate\Support\Str::limit(strip_tags($this->body), $length);
+        // 1. Rimuoviamo i tag HTML
+        $stripped = strip_tags($this->body);
+
+        // 2. Convertiamo le entità come &nbsp; in spazi reali
+        $decoded = html_entity_decode($stripped, ENT_QUOTES, 'UTF-8');
+
+        // 3. (Opzionale ma consigliato) Puliamo eventuali spazi multipli rimasti
+        $clean = preg_replace('/\s+/', ' ', $decoded);
+
+        return \Illuminate\Support\Str::limit(trim($clean), $length);
     }
 }

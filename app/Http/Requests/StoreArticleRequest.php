@@ -18,6 +18,7 @@ class StoreArticleRequest extends FormRequest
             'title'       => ['required', 'string', 'max:255'],
             'body'        => ['required', 'string', 'min:10'],
             'category_id' => ['required', 'integer', Rule::exists('categories', 'id')],
+            'author_id'   => ['required', 'integer', Rule::exists('users', 'id')],
             'publish'     => ['nullable', 'boolean'],
         ];
     }
@@ -31,6 +32,8 @@ class StoreArticleRequest extends FormRequest
             'body.min'             => 'Il contenuto deve avere almeno 10 caratteri.',
             'category_id.required' => 'La categoria è obbligatoria.',
             'category_id.exists'   => 'La categoria selezionata non è valida.',
+            'author_id.required'   => 'L\'autore è obbligatorio.',
+            'author_id.exists'     => 'L\'autore selezionato non è valido.',
         ];
     }
 }

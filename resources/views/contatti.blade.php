@@ -1,5 +1,4 @@
-<x-layout
-    title="Contatti | Studi Legali Consorziati – Catania"
+<x-layout title="Contatti | Studi Legali Consorziati – Catania"
     description="Contatta gli Studi Legali Consorziati a Catania. Trova i nostri recapiti e la mappa della sede.">
 
     {{-- HERO --}}
@@ -70,25 +69,5 @@
         </div>
     </section>
 
-    {{-- MAPPA --}}
-    <section class="contatti-mappa-section" aria-label="Mappa sede dello studio">
-        <div class="contatti-mappa-header">
-            <div class="container text-center">
-                <span class="section-label">
-                    <i class="fas fa-location-dot me-2" aria-hidden="true"></i>Sede
-                </span>
-                <h2 class="section-title">Dove Trovarci</h2>
-                <div class="section-divider"></div>
-            </div>
-        </div>
-
-        <div class="contatti-mappa-wrapper">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.7373271360298!2d15.094047675536432!3d37.514112972052196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1313fcceaacf3385%3A0xa9c58cbdc6c55c72!2sVia%20Giuseppe%20Simili%2C%2014%2C%2095129%20Catania%20CT!5e0!3m2!1sit!2sit!4v1776268544416!5m2!1sit!2sit"
-                title="Sede degli Studi Legali Consorziati – Via Giuseppe Simili 14, 95129 Catania"
-                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
 
 </x-layout>

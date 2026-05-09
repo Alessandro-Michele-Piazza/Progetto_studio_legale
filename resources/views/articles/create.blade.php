@@ -62,6 +62,24 @@
                                     @enderror
                                 </div>
 
+                                <div class="col-sm-6">
+                                    <label for="author_id" class="article-editor__label">Autore</label>
+                                    <div class="article-editor__select-wrap">
+                                        <select class="article-editor__control @error('author_id') article-editor__control--error @enderror"
+                                                id="author_id" name="author_id" required>
+                                            <option value="" disabled {{ old('author_id', auth()->id()) ? '' : 'selected' }}>Seleziona autore</option>
+                                            @foreach($authors as $author)
+                                                <option value="{{ $author->id }}" {{ (string) old('author_id', auth()->id()) === (string) $author->id ? 'selected' : '' }}>
+                                                    {{ $author->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('author_id')
+                                        <span class="article-editor__error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="col-12">
                                     <label for="body" class="article-editor__label">Contenuto</label>
                                     <textarea class="article-editor__control article-editor__control--textarea @error('body') article-editor__control--error @enderror"
