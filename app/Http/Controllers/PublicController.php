@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\ContactCard;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
@@ -31,6 +32,13 @@ class PublicController extends Controller
 
     public function contact(): View
     {
-        return view('contatti');
+        $cards = collect();
+
+        if (Schema::hasTable('contact_cards')) {
+            ContactCard::ensureFixedCards();
+            $cards = ContactCard::orderedList();
+        }
+
+        return view('contatti', compact('cards'));
     }
 }

@@ -1,5 +1,4 @@
-<x-layout
-    :title="$category->name . ' | Studi Legali Consorziati'"
+<x-layout :title="$category->name . ' | Studi Legali Consorziati'"
     :description="\Illuminate\Support\Str::limit(strip_tags($category->description), 160)">
 
     {{-- HERO CATEGORIA --}}
@@ -57,15 +56,5 @@
         </div>
     </section>
 
-    {{-- CTA CONTATTI --}}
-    <section class="cta-section" aria-label="Richiedi consulenza">
-        <div class="container text-center">
-            <h2 class="font-title text-white mb-3">Hai bisogno di assistenza in materia di {{ $category->name }}?</h2>
-            <p class="text-white-50 mb-4 font-body">Contattaci per una consulenza con il nostro specialista.</p>
-            <a href="{{ route('contatti') }}" class="btn-site">
-                <i class="fas fa-phone-alt me-2" aria-hidden="true"></i>Contattaci Ora
-            </a>
-        </div>
-    </section>
 
 </x-layout>

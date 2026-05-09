@@ -16,8 +16,10 @@ class ContactFormMail extends Mailable
 
     public function envelope(): Envelope
     {
+        $fullName = trim($this->data['first_name'].' '.$this->data['last_name']);
+
         return new Envelope(
-            subject: 'Nuovo messaggio da ' . $this->data['name'],
+            subject: 'Nuovo messaggio da ' . $fullName,
             replyTo: [$this->data['email']],
         );
     }

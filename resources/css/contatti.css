@@ -1,216 +1,119 @@
 /* ============================================================
-   CONTATTI.CSS — Pagina Contatti
-   Studi Legali Consorziati
-   ============================================================ */
-
-/* ============================================================
-   SEZIONE: Utility condivise (non incluse in app.css)
-   ============================================================ */
-
+CONTATTI.CSS — Design Professionale Unificato
+============================================================ */
 .section-label {
-    display: inline-block;
-    font-family: var(--opensans);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--dorato_medio);
-    margin-bottom: 0.75rem;
+display: inline-block;
+font-family: var(--opensans);
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(--dorato_medio);
+margin-bottom: 1rem;
 }
-
-/* ============================================================
-   SEZIONE: Hero Contatti
-   ============================================================ */
-
 .contatti-hero {
-    background-color: var(--blu_scuro);
-    padding: 7rem 0 3.5rem;
-    margin-bottom: 0;
+background-color: var(--blu_scuro);
+padding: 7rem 0 5rem;
+text-align: center;
 }
-
-.contatti-hero .section-label {
-    color: var(--dorato_chiaro);
-}
-
 .contatti-hero__title {
-    font-family: var(--playfair);
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: #ffffff;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+font-family: var(--playfair);
+font-size: clamp(2.5rem, 6vw, 3.5rem);
+color: #ffffff;
+margin-bottom: 1rem;
 }
-
 .contatti-hero__subtitle {
-    font-family: var(--opensans);
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.72);
-    max-width: 520px;
-    margin: 0 auto;
-    line-height: 1.75;
+font-family: var(--opensans);
+font-size: 1.1rem;
+color: rgba(255, 255, 255, 0.7);
+max-width: 600px;
+margin: 0 auto;
 }
-
-.section-title {
-    font-family: var(--playfair);
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    color: var(--blu_scuro);
-    margin-bottom: 0.5rem;
-    line-height: 1.25;
-}
-
-.section-divider {
-    width: 50px;
-    height: 3px;
-    background-color: var(--dorato_medio);
-    margin-bottom: 2rem;
-}
-
-/* ============================================================
-   SEZIONE: Principale (Info cards grid)
-   ============================================================ */
-
+/* SEZIONE CARD */
 .contatti-main-section {
-    padding: 5rem 0 6rem;
-    background-color: var(--bianco_sfondo);
+padding: 5rem 0;
+background-color: #f8f9fa;
 }
-
 .contatti-info-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1.5rem;
 }
-
-/* ---- Info Card singola ---- */
-
+/* CARD UNIFICATA */
 .contatti-info-card {
-    background-color: #ffffff;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 4px 24px rgba(26, 60, 90, 0.07);
-    border-bottom: 3px solid transparent;
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+background-color: #ffffff;
+padding: 2.5rem 2rem;
+display: flex;
+flex-direction: column;
+border: 1px solid #e0e0e0;
+transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+height: 100%;
 }
-
 .contatti-info-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 40px rgba(26, 60, 90, 0.13);
-    border-bottom-color: var(--dorato_medio);
+border-color: var(--dorato_medio);
+box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
-
+/* ICONA E TITOLO */
 .contatti-info-card__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    background-color: var(--blu_scuro);
-    color: var(--bianco_sfondo);
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+font-size: 2rem;
+color: var(--blu_scuro);
+margin-bottom: 1.5rem;
 }
-
-.contatti-info-card:hover .contatti-info-card__icon {
-    background-color: var(--dorato_medio);
-    color: var(--bianco_sfondo);
-    transform: scale(1.1);
-}
-
 .contatti-info-card__label {
-    display: block;
-    font-family: var(--opensans);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--dorato_medio);
-    margin-bottom: 0.75rem;
+font-family: var(--playfair);
+font-size: 1.4rem;
+font-weight: 700;
+color: var(--blu_scuro);
+margin-bottom: 0.8rem;
+display: block;
 }
-
 .contatti-info-card__text {
-    font-family: var(--opensans);
-    font-size: 0.95rem;
-    color: var(--nero_testo);
-    margin: 0;
-    line-height: 1.7;
+font-family: var(--opensans);
+font-size: 0.95rem;
+color: #555;
+line-height: 1.6;
+margin-bottom: 2rem;
 }
-
-.contatti-info-card__text a {
-    color: var(--nero_testo);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.4);
-    transition: color 0.2s ease, border-color 0.2s ease;
+/* INFO AVVOCATO (Integrate senza box separato) */
+.contatti-info-card__professional {
+margin-top: auto;
+padding-top: 1.5rem;
+border-top: 2px solid #f0f0f0;
 }
-
-.contatti-info-card__text a:hover {
-    color: var(--blu_scuro);
-    border-bottom-color: var(--dorato_medio);
+.professional-name {
+font-family: var(--opensans);
+font-size: 0.8rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: var(--dorato_medio);
+margin-bottom: 1rem;
+display: block;
 }
-
-
-/* ============================================================
-   SEZIONE: Mappa Google
-   ============================================================ */
-
-.contatti-mappa-section {
-    background-color: #ffffff;
+.professional-detail {
+display: flex;
+align-items: center;
+gap: 0.8rem;
+margin-bottom: 0.6rem;
+font-family: var(--opensans);
+font-size: 0.9rem;
+color: var(--blu_scuro);
 }
-
-.contatti-mappa-header {
-    padding: 4.5rem 0 2.5rem;
+.professional-detail i {
+color: var(--dorato_medio);
+width: 16px;
+font-size: 0.85rem;
 }
-
-.contatti-mappa-header .section-divider {
-    margin-left: auto;
-    margin-right: auto;
+.professional-detail a {
+color: inherit;
+text-decoration: none;
+font-weight: 600;
 }
-
-.contatti-mappa-wrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 38%;
-    min-height: 320px;
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+.contatti-info-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-.contatti-mappa-wrapper iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-    filter: grayscale(15%) contrast(1.05) brightness(0.97);
-}
-
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
-@media (max-width: 991.98px) {
-    .contatti-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 767.98px) {
-    .contatti-main-section {
-        padding: 3.5rem 0 4rem;
-    }
-
-    .contatti-mappa-wrapper {
-        padding-bottom: 65%;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .contatti-info-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contatti-mappa-wrapper {
-        padding-bottom: 80%;
-        min-height: 280px;
-    }
+@media (max-width: 650px) {
+.contatti-info-grid { grid-template-columns: 1fr; }
+.contatti-hero__title { font-size: 2.2rem; }
 }

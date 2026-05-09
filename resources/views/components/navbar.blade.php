@@ -24,7 +24,7 @@
                     <ul class="dropdown-menu">
                         @foreach($navCategories ?? [] as $category)
                             <li><a class="dropdown-item"
-                                    href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></li>
+                                    href="{{ route('categories.show', data_get($category, 'slug')) }}">{{ data_get($category, 'name') }}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -50,6 +50,9 @@
                             </li>
                             <li>
                                 <a href="{{ route('articoli.create') }}" class="dropdown-item">Nuovo Articolo</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('contact-cards.index') }}" class="dropdown-item">Gestione Contatti</a>
                             </li>
 
                         </ul>

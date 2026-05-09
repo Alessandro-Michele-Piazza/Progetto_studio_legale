@@ -6,6 +6,9 @@
 >
     @push('scripts')
         @vite('resources/js/auth-password-toggle.js')
+        @if(config('services.recaptcha.site_key'))
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        @endif
     @endpush
 
     <section class="auth-wrapper" aria-labelledby="auth-heading">
@@ -21,21 +24,80 @@
                 <form method="POST" action="{{ route('register') }}" novalidate>
                     @csrf
 
+                    @if($errors->has('g-recaptcha-response'))
+                        <div class="auth-alert auth-alert--error" role="alert">
+                            {{ $errors->first('g-recaptcha-response') }}
+                        </div>
+                    @endif
+
                     <div class="auth-field">
-                        <label for="name" class="auth-label">Nome e cognome</label>
+                        <label for="first_name" class="auth-label">Nome</label>
                         <input
-                            id="name"
+                            id="first_name"
                             type="text"
-                            name="name"
-                            class="auth-input @error('name') auth-input--error @enderror"
-                            value="{{ old('name') }}"
+                            name="first_name"
+                            class="auth-input @error('first_name') auth-input--error @enderror"
+                            value="{{ old('first_name') }}"
                             required
-                            autocomplete="name"
+                            autocomplete="given-name"
                             autofocus
-                            @error('name') aria-describedby="name-error" aria-invalid="true" @enderror
+                            @error('first_name') aria-describedby="first-name-error" aria-invalid="true" @enderror
                         >
-                        @error('name')
-                            <span id="name-error" class="auth-error" role="alert">{{ $message }}</span>
+                        @error('first_name')
+                            <span id="first-name-error" class="auth-error" role="alert">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="last_name" class="auth-label">Cognome</label>
+                        <input
+                            id="last_name"
+                            type="text"
+                            name="last_name"
+                            class="auth-input @error('last_name') auth-input--error @enderror"
+                            value="{{ old('last_name') }}"
+                            required
+                            autocomplete="family-name"
+                            @error('last_name') aria-describedby="last-name-error" aria-invalid="true" @enderror
+                        >
+                        @error('last_name')
+                            <span id="last-name-error" class="auth-error" role="alert">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="intervention_area" class="auth-label">Area di intervento</label>
+                        <select
+                            id="intervention_area"
+                            name="intervention_area"
+                            class="auth-input @error('intervention_area') auth-input--error @enderror"
+                            required
+                            @error('intervention_area') aria-describedby="intervention-area-error" aria-invalid="true" @enderror
+                        >
+                            <option value="">Seleziona un'area</option>
+                            @foreach(['Diritto Civile', 'Diritto Penale', 'Diritto del Lavoro', 'Diritto Amministrativo', 'Altro'] as $area)
+                                <option value="{{ $area }}" @selected(old('intervention_area') === $area)>{{ $area }}</option>
+                            @endforeach
+                        </select>
+                        @error('intervention_area')
+                            <span id="intervention-area-error" class="auth-error" role="alert">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="sede" class="auth-label">Sede</label>
+                        <input
+                            id="sede"
+                            type="text"
+                            name="sede"
+                            class="auth-input @error('sede') auth-input--error @enderror"
+                            value="{{ old('sede') }}"
+                            required
+                            autocomplete="address-level2"
+                            @error('sede') aria-describedby="sede-error" aria-invalid="true" @enderror
+                        >
+                        @error('sede')
+                            <span id="sede-error" class="auth-error" role="alert">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -102,6 +164,16 @@
                                 <i class="fa-regular fa-eye" aria-hidden="true"></i>
                             </button>
                         </div>
+                    </div>
+
+                    <input type="text" name="company_name" class="auth-hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                    <div class="auth-field">
+                        @if(config('services.recaptcha.site_key'))
+                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
+                        @else
+                            <span class="auth-error" role="alert">reCAPTCHA non configurato. Registrazione temporaneamente disabilitata.</span>
+                        @endif
                     </div>
 
                     <button type="submit" class="auth-submit-btn">Crea account</button>

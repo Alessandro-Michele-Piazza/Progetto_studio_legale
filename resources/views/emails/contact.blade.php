@@ -25,7 +25,11 @@
         <div class="body">
             <div class="field">
                 <div class="field-label">Nome</div>
-                <div class="field-value">{{ $contact['name'] }}</div>
+                <div class="field-value">{{ $contact['first_name'] }} {{ $contact['last_name'] }}</div>
+            </div>
+            <div class="field">
+                <div class="field-label">Area di intervento</div>
+                <div class="field-value">{{ $contact['intervention_area'] }}</div>
             </div>
             <div class="field">
                 <div class="field-label">Email</div>

@@ -1,73 +1,74 @@
-<x-layout title="Contatti | Studi Legali Consorziati – Catania"
-    description="Contatta gli Studi Legali Consorziati a Catania. Trova i nostri recapiti e la mappa della sede.">
-
-    {{-- HERO --}}
-    <section class="contatti-hero" aria-label="Intestazione pagina contatti">
-        <div class="container text-center">
-            <span class="section-label">Studio Legale</span>
-            <h1 class="contatti-hero__title">Contattaci</h1>
+<x-layout
+    title="Contatti | Studi Legali Consorziati Catania"
+    description="Contatta i nostri professionisti specializzati in diritto civile, penale, amministrativo e del lavoro."
+>
+    <section class="contatti-hero">
+        <div class="container">
+            <span class="section-label">Siamo al tuo servizio</span>
+            <h1 class="contatti-hero__title">Contatti</h1>
             <p class="contatti-hero__subtitle">
-                Il nostro team è a tua disposizione per una consulenza legale personalizzata
+                Le aree di intervento sono aggiornate dinamicamente dal database.
             </p>
         </div>
     </section>
 
-    {{-- MAIN: INFO --}}
-    <section class="contatti-main-section" aria-label="Recapiti dello studio">
+    <section class="contatti-main-section">
         <div class="container">
-
             <div class="contatti-info-grid">
+                @forelse($cards as $card)
+                    <article class="contatti-info-card">
+                        <div class="contatti-info-card__icon">
+                            <i class="fas {{ $card->icon_class }}" aria-hidden="true"></i>
+                        </div>
 
-                {{-- Card Indirizzo --}}
-                <div class="contatti-info-card">
-                    <div class="contatti-info-card__icon">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                    </div>
-                    <strong class="contatti-info-card__label">Indirizzo</strong>
-                    <p class="contatti-info-card__text">
-                        Via Giuseppe Simili, 14<br>
-                        95129 Catania (CT)
-                    </p>
-                </div>
+                        <strong class="contatti-info-card__label">{{ $card->area_name }}</strong>
+                        <p class="contatti-info-card__text">{{ $card->description }}</p>
 
-                {{-- Card Telefono --}}
-                <div class="contatti-info-card">
-                    <div class="contatti-info-card__icon">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                    </div>
-                    <strong class="contatti-info-card__label">Telefono</strong>
-                    <p class="contatti-info-card__text">
-                        <a href="tel:+39095530951">+39 095 530951</a>
-                    </p>
-                </div>
+                        <div class="contatti-info-card__professional">
+                            @forelse($card->professionals as $professional)
+                                <div class="mb-3 pb-3 border-bottom">
+                                    <span class="professional-name">{{ $professional->professional_name }}</span>
 
-                {{-- Card Email --}}
-                <div class="contatti-info-card">
-                    <div class="contatti-info-card__icon">
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                    </div>
-                    <strong class="contatti-info-card__label">Email</strong>
-                    <p class="contatti-info-card__text">
-                        vallonelegal@gmail.com
-                    </p>
-                </div>
+                                    <div class="professional-detail">
+                                        <i class="fas fa-location-dot" aria-hidden="true"></i>
+                                        <span>{{ $professional->sede }}</span>
+                                    </div>
 
-                {{-- Card Orari --}}
-                <div class="contatti-info-card">
-                    <div class="contatti-info-card__icon">
-                        <i class="fas fa-clock" aria-hidden="true"></i>
-                    </div>
-                    <strong class="contatti-info-card__label">Orari di Ricevimento</strong>
-                    <p class="contatti-info-card__text">
-                        Lunedì – Venerdì: 09:00 – 19:00<br>
-                        Su appuntamento.
-                    </p>
-                </div>
+                                    <div class="professional-detail">
+                                        <i class="fas fa-phone" aria-hidden="true"></i>
+                                        <a href="tel:{{ preg_replace('/\s+/', '', $professional->phone) }}">{{ $professional->phone }}</a>
+                                    </div>
 
+                                    <div class="professional-detail">
+                                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                                        <a href="mailto:{{ $professional->email }}">{{ $professional->email }}</a>
+                                    </div>
+                                </div>
+                            @empty
+                                <span class="professional-name">Nessun professionista assegnato</span>
+                            @endforelse
+                        </div>
+                    </article>
+                @empty
+                    <article class="contatti-info-card">
+                        <div class="contatti-info-card__icon">
+                            <i class="fas fa-user-tie" aria-hidden="true"></i>
+                        </div>
+                        <strong class="contatti-info-card__label">Aree in aggiornamento</strong>
+                        <p class="contatti-info-card__text">
+                            Le card di contatto sono in fase di aggiornamento. Torna tra poco.
+                        </p>
+                    </article>
+                @endforelse
             </div>
-
         </div>
     </section>
 
-
+    @auth
+        <section class="contatti-main-section pt-0">
+            <div class="container text-center">
+                <a href="{{ route('contact-cards.index') }}" class="btn-site">Gestione Contatti</a>
+            </div>
+        </section>
+    @endauth
 </x-layout>

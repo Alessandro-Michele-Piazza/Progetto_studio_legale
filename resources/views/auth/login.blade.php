@@ -6,6 +6,9 @@
 >
     @push('scripts')
         @vite('resources/js/auth-password-toggle.js')
+        @if(config('services.recaptcha.site_key'))
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        @endif
     @endpush
 
     <section class="auth-wrapper" aria-labelledby="auth-heading">
@@ -26,6 +29,12 @@
 
                 <form method="POST" action="{{ route('login') }}" novalidate>
                     @csrf
+
+                    @if($errors->has('g-recaptcha-response'))
+                        <div class="auth-alert auth-alert--error" role="alert">
+                            {{ $errors->first('g-recaptcha-response') }}
+                        </div>
+                    @endif
 
                     <div class="auth-field">
                         <label for="email" class="auth-label">Indirizzo email</label>
@@ -69,6 +78,16 @@
                         @error('password')
                             <span id="password-error" class="auth-error" role="alert">{{ $message }}</span>
                         @enderror
+                    </div>
+
+                    <input type="text" name="login_company_name" class="auth-hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                    <div class="auth-field">
+                        @if(config('services.recaptcha.site_key'))
+                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
+                        @else
+                            <span class="auth-error" role="alert">reCAPTCHA non configurato. Accesso temporaneamente disabilitato.</span>
+                        @endif
                     </div>
 
                     <button type="submit" class="auth-submit-btn">Accedi</button>

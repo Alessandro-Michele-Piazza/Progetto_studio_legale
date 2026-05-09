@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Rules\RecaptchaRule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -22,8 +23,11 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+        $rules = [
+            'first_name' => ['required', 'string', 'max:100'],
+            'last_name' => ['required', 'string', 'max:100'],
+            'intervention_area' => ['required', 'string', 'max:150'],
+            'sede' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -32,10 +36,18 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-        ])->validate();
+            'company_name' => ['nullable', 'max:0'],
+            'g-recaptcha-response' => ['required', 'string', new RecaptchaRule()],
+        ];
+
+        Validator::make($input, $rules)->validate();
 
         return User::create([
-            'name' => $input['name'],
+            'name' => trim($input['first_name'].' '.$input['last_name']),
+            'first_name' => $input['first_name'],
+            'last_name' => $input['last_name'],
+            'intervention_area' => $input['intervention_area'],
+            'sede' => $input['sede'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);

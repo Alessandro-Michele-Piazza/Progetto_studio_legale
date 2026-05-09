@@ -5,6 +5,8 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactCardController;
+use App\Http\Controllers\ProfessionalProfileController;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/contatti', [PublicController::class, 'contact'])->name('contatti');
@@ -22,4 +24,18 @@ Route::get('/articoli/{article}', [ArticleController::class, 'show'])->name('art
 Route::get('/articoli/{article}/modifica', [ArticleController::class, 'edit'])->name('articoli.edit');
 Route::put('/articoli/{article}', [ArticleController::class, 'update'])->name('articoli.update');
 Route::delete('/articoli/{article}', [ArticleController::class, 'destroy'])->name('articoli.destroy');
+
+Route::middleware(['auth'])->group(function () {
+	Route::get('/gestione-contatti', [ContactCardController::class, 'index'])
+		->name('contact-cards.index');
+	Route::get('/gestione-contatti/{contactCard}/modifica', [ContactCardController::class, 'edit'])
+		->name('contact-cards.edit');
+	Route::put('/gestione-contatti/{contactCard}', [ContactCardController::class, 'update'])
+		->name('contact-cards.update');
+
+	Route::get('/profilo-professionale/modifica', [ProfessionalProfileController::class, 'edit'])
+		->name('professional-profile.edit');
+	Route::put('/profilo-professionale', [ProfessionalProfileController::class, 'update'])
+		->name('professional-profile.update');
+});
 

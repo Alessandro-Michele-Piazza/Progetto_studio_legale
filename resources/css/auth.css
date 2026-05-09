@@ -192,6 +192,21 @@
     border: 1px solid #a3cfbb;
 }
 
+.auth-alert--error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f1aeb5;
+}
+
+.auth-hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 480px) {
     .auth-card {
