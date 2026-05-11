@@ -52,7 +52,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a href="{{ route('articoli.create') }}" class="dropdown-item">Nuovo Articolo</a></li>
-                            <li><a href="{{ route('contact-cards.index') }}" class="dropdown-item">Gestione Contatti</a>
+                            <li><a href="{{ route('contact-cards.index') }}" class="dropdown-item">Gestione Avvocati</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider" style="border-color: rgba(197, 160, 89, 0.2)">

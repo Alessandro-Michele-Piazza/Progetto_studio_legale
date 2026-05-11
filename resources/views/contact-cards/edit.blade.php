@@ -3,7 +3,7 @@
     :styles="['resources/css/contact-cards.css']">
     <section class="py-5 contact-cards-section">
         <div class="container contact-cards-edit__container">
-            <a href="{{ route('contact-cards.index') }}" class="btn-site my-5">&larr; Torna alla gestione contatti</a>
+            <a href="{{ route('contact-cards.index') }}" class="btn-site my-5">&larr; Torna alla gestione avvocati</a>
 
             <div class="bg-white border p-4 p-md-5">
                 <h1 class="font-title mb-2">Modifica area: {{ $contactCard->area_name }}</h1>

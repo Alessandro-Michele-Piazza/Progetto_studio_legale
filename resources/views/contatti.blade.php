@@ -69,7 +69,7 @@
     @auth
         <section class="contatti-main-section pt-0">
             <div class="container text-center">
-                <a href="{{ route('contact-cards.index') }}" class="btn-site">Gestione Contatti</a>
+                <a href="{{ route('contact-cards.index') }}" class="btn-site">Gestione Avvocati</a>
             </div>
         </section>
     @endauth

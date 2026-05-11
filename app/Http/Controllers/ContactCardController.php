@@ -56,6 +56,6 @@ class ContactCardController extends Controller
 
         return redirect()
             ->route('contact-cards.index')
-            ->with('success', 'Card aggiornata con successo.');
+            ->with('success', 'Lista Avvocati aggiornata con successo.');
     }
 }

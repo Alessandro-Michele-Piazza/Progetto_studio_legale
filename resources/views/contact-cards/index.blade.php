@@ -1,6 +1,6 @@
 <x-layout
-    title="Gestione Contatti | Studi Legali Consorziati"
-    description="Dashboard per la modifica delle 4 card contatti fisse."
+    title="Gestione Avvocati | Studi Legali Consorziati"
+    description="Dashboard per la modifica delle 4 card avvocati fisse."
     robots="noindex, nofollow"
     :styles="['resources/css/contact-cards.css']"
 >
@@ -8,7 +8,7 @@
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
                 <div>
-                    <h1 class="font-title mb-2">Gestione Contatti</h1>
+                    <h1 class="font-title mb-2">Gestione Avvocati</h1>
                     <p class="mb-0 text-muted">Sono disponibili solo le 4 aree fisse. Puoi modificare i dati, non creare o eliminare card.</p>
                 </div>
                 <a href="{{ route('contatti') }}" class="btn-site">Torna a Contatti</a>
