@@ -4,7 +4,8 @@
 @endphp
 
 <x-layout :title="$article->title . ' | Studi Legali Consorziati'" :description="$article->excerpt(160)"
-    ogType="article" :ogTitle="$article->title" :ogDescription="$article->excerpt(160)" :ogUrl="route('articoli.show', $article)">
+    ogType="article" :ogTitle="$article->title" :ogDescription="$article->excerpt(160)" :ogUrl="route('articoli.show', $article)"
+    :styles="['resources/css/articles/single.css']">
 
     <article class="article-single" itemscope itemtype="https://schema.org/Article">
         <header class="article-single__header">

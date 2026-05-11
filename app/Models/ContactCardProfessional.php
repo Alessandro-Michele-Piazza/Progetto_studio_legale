@@ -12,6 +12,7 @@ class ContactCardProfessional extends Model
         'professional_name',
         'phone',
         'email',
+        'profile_image',
         'sede',
         'sort_order',
     ];

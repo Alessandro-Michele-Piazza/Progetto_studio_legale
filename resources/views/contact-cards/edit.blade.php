@@ -20,7 +20,8 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('contact-cards.update', $contactCard) }}" novalidate>
+                <form method="POST" action="{{ route('contact-cards.update', $contactCard) }}" enctype="multipart/form-data"
+                    novalidate>
                     @csrf
                     @method('PUT')
 
@@ -45,6 +46,7 @@
                             'professional_name' => $p->professional_name,
                             'phone' => $p->phone,
                             'email' => $p->email,
+                            'existing_profile_image' => $p->profile_image,
                             'sede' => $p->sede,
                         ])->toArray());
 
@@ -54,13 +56,15 @@
                                     'professional_name' => '',
                                     'phone' => '',
                                     'email' => '',
+                                    'existing_profile_image' => null,
                                     'sede' => '',
                                 ]
                             ];
                         }
                     @endphp
 
-                    <div id="professionals-wrapper" class="d-flex flex-column gap-3 mb-4">
+                    <div id="professionals-wrapper" class="d-flex flex-column gap-3 mb-4"
+                        data-placeholder-image="{{ asset('media/Portrait_Placeholder.webp') }}">
                         @foreach($rows as $index => $row)
                             <div class="border rounded p-3 professional-row" data-index="{{ $index }}">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -77,6 +81,32 @@
                                         value="{{ $row['professional_name'] ?? '' }}" required>
                                     @error('professionals.' . $index . '.professional_name')
                                         <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                @php
+                                    $existingProfileImage = $row['existing_profile_image'] ?? null;
+                                    $profilePreview = $existingProfileImage
+                                        ? asset('storage/' . ltrim($existingProfileImage, '/'))
+                                        : asset('media/Portrait_Placeholder.webp');
+                                @endphp
+
+                                <input type="hidden" name="professionals[{{ $index }}][existing_profile_image]"
+                                    value="{{ $existingProfileImage }}">
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="profile_image_{{ $index }}">Foto profilo (opzionale)</label>
+                                    <div class="contact-card-image-upload">
+                                        <img src="{{ $profilePreview }}" class="contact-card-image-preview"
+                                            alt="Anteprima foto profilo di {{ $row['professional_name'] ?? 'avvocato' }}"
+                                            width="56" height="56" loading="lazy" decoding="async">
+                                        <input id="profile_image_{{ $index }}" type="file"
+                                            name="professionals[{{ $index }}][profile_image]"
+                                            class="form-control @error('professionals.' . $index . '.profile_image') is-invalid @enderror"
+                                            accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+                                    </div>
+                                    @error('professionals.' . $index . '.profile_image')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
                                     @enderror
                                 </div>
 

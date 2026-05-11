@@ -25,6 +25,7 @@ class ArticleController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('auth', except: ['index', 'show', 'byCategory']),
+            new Middleware('verified', except: ['index', 'show', 'byCategory']),
         ];
     }
 

@@ -2,6 +2,7 @@
     title="Nuovo Articolo | Studi Legali Consorziati"
     description=""
     robots="noindex, nofollow"
+    :styles="['resources/css/articles/editor.css']"
 >
 
     <section class="article-form-section" aria-label="Creazione articolo">
@@ -105,7 +106,7 @@
 
     @push('scripts')
         <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.css">
-        <script src="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.umd.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.umd.js" defer></script>
         @vite('resources/js/article-editor.js')
     @endpush
 

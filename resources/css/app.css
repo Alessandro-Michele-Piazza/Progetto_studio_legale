@@ -1,9 +1,7 @@
+@import "@fontsource/open-sans/latin-400.css";
+@import "@fontsource/open-sans/latin-700.css";
 @import "bootstrap";
 @import "navbar";
-@import "footer";
-@import "welcome";
-@import "contatti";
-@import "articles";
 @import "bottoni";
 @import "scrollbar";
 

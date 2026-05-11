@@ -23,6 +23,7 @@
     :title="$pageTitle"
     :description="$pageDesc"
     ogType="website"
+    :styles="['resources/css/articles/listing.css']"
 >
 
     <section class="articles-hero" aria-label="Intestazione articoli">

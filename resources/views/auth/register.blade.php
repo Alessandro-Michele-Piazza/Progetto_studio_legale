@@ -6,6 +6,7 @@
 >
     @push('scripts')
         @vite('resources/js/auth-password-toggle.js')
+        @vite('resources/js/auth-profile-image-preview.js')
         @if(config('services.recaptcha.site_key'))
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         @endif
@@ -21,7 +22,7 @@
             </header>
 
             <div class="auth-body">
-                <form method="POST" action="{{ route('register') }}" novalidate>
+                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" novalidate>
                     @csrf
 
                     @if($errors->has('g-recaptcha-response'))
@@ -58,8 +59,7 @@
                             value="{{ old('last_name') }}"
                             required
                             autocomplete="family-name"
-                            @error('last_name') aria-describedby="last-name-error" aria-invalid="true" @enderror
-                        >
+                            @error('last_name') aria-describedby="last-name-error" aria-invalid="true" @enderror >
                         @error('last_name')
                             <span id="last-name-error" class="auth-error" role="alert">{{ $message }}</span>
                         @enderror
@@ -115,6 +115,28 @@
                         >
                         @error('email')
                             <span id="email-error" class="auth-error" role="alert">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="profile_image" class="auth-label">Foto profilo (opzionale)</label>
+                        <div class="auth-profile-upload">
+                            <img src="{{ asset('media/Portrait_Placeholder.webp') }}" id="profile-image-preview"
+                                class="auth-profile-preview" alt="Anteprima foto profilo" width="72"
+                                height="72" loading="lazy" decoding="async"
+                                onerror="this.onerror=null;this.src='{{ asset('media/Portrait_Placeholder.webp') }}';">
+                            <input
+                                id="profile_image"
+                                type="file"
+                                name="profile_image"
+                                class="auth-input @error('profile_image') auth-input--error @enderror"
+                                accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                                data-placeholder-image="{{ asset('media/Portrait_Placeholder.webp') }}"
+                                @error('profile_image') aria-describedby="profile-image-error" aria-invalid="true" @enderror
+                            >
+                        </div>
+                        @error('profile_image')
+                            <span id="profile-image-error" class="auth-error" role="alert">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -176,7 +198,10 @@
                         @endif
                     </div>
 
-                    <button type="submit" class="auth-submit-btn">Crea account</button>
+                    <div class="auth-actions-stack">
+                        <button type="submit" class="auth-submit-btn">Crea account</button>
+                        <a href="{{ route('login') }}" class="auth-secondary-btn">GIA' REGISTRATO</a>
+                    </div>
                 </form>
             </div>
         </div>

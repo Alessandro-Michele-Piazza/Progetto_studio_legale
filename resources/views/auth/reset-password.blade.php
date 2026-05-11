@@ -1,14 +1,11 @@
 <x-layout
-    title="Accedi | Studi Legali Uniti"
-    description="Accedi all'area riservata degli Studi Legali Uniti."
+    title="Nuova Password | Studi Legali Uniti"
+    description="Imposta una nuova password per il tuo account."
     robots="noindex, nofollow"
     :styles="['resources/css/auth.css']"
 >
     @push('scripts')
         @vite('resources/js/auth-password-toggle.js')
-        @if(config('services.recaptcha.site_key'))
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        @endif
     @endpush
 
     <section class="auth-wrapper" aria-labelledby="auth-heading">
@@ -17,24 +14,14 @@
                 <a href="{{ route('homepage') }}" class="auth-logo-link" aria-label="Torna alla homepage di Studi Legali Uniti">
                     Studi Legali Uniti
                 </a>
-                <h1 id="auth-heading" class="auth-title">Accedi al tuo account</h1>
+                <h1 id="auth-heading" class="auth-title">Imposta una nuova password</h1>
             </header>
 
             <div class="auth-body">
-                @if(session('status'))
-                    <div class="auth-alert auth-alert--success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                <form method="POST" action="{{ route('login') }}" novalidate>
+                <form method="POST" action="{{ route('password.update') }}" novalidate>
                     @csrf
 
-                    @if($errors->has('g-recaptcha-response'))
-                        <div class="auth-alert auth-alert--error" role="alert">
-                            {{ $errors->first('g-recaptcha-response') }}
-                        </div>
-                    @endif
+                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
                     <div class="auth-field">
                         <label for="email" class="auth-label">Indirizzo email</label>
@@ -42,11 +29,10 @@
                             id="email"
                             type="email"
                             name="email"
-                            class="auth-input @error('email') auth-input--error @enderror"
-                            value="{{ old('email') }}"
+                            value="{{ old('email', $request->email) }}"
                             required
                             autocomplete="email"
-                            autofocus
+                            class="auth-input @error('email') auth-input--error @enderror"
                             @error('email') aria-describedby="email-error" aria-invalid="true" @enderror
                         >
                         @error('email')
@@ -55,15 +41,15 @@
                     </div>
 
                     <div class="auth-field">
-                        <label for="password" class="auth-label">Password</label>
+                        <label for="password" class="auth-label">Nuova password</label>
                         <div class="password-field">
                             <input
                                 id="password"
                                 type="password"
                                 name="password"
-                                class="auth-input @error('password') auth-input--error @enderror"
                                 required
-                                autocomplete="current-password"
+                                autocomplete="new-password"
+                                class="auth-input @error('password') auth-input--error @enderror"
                                 @error('password') aria-describedby="password-error" aria-invalid="true" @enderror
                             >
                             <button
@@ -80,21 +66,29 @@
                         @enderror
                     </div>
 
-                    <input type="text" name="login_company_name" class="auth-hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-
                     <div class="auth-field">
-                        @if(config('services.recaptcha.site_key'))
-                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
-                        @else
-                            <span class="auth-error" role="alert">reCAPTCHA non configurato. Accesso temporaneamente disabilitato.</span>
-                        @endif
+                        <label for="password_confirmation" class="auth-label">Conferma password</label>
+                        <div class="password-field">
+                            <input
+                                id="password_confirmation"
+                                type="password"
+                                name="password_confirmation"
+                                required
+                                autocomplete="new-password"
+                                class="auth-input"
+                            >
+                            <button
+                                type="button"
+                                class="password-toggle-btn"
+                                data-target="password_confirmation"
+                                aria-label="Mostra conferma password"
+                            >
+                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
 
-                    <button type="submit" class="auth-submit-btn">Accedi</button>
-
-                    @if(Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" class="auth-inline-link">Password dimenticata?</a>
-                    @endif
+                    <button type="submit" class="auth-submit-btn">Aggiorna password</button>
                 </form>
             </div>
         </div>

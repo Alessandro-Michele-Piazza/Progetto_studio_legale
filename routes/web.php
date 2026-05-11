@@ -23,7 +23,7 @@ Route::get('/articoli/{article}/modifica', [ArticleController::class, 'edit'])->
 Route::put('/articoli/{article}', [ArticleController::class, 'update'])->name('articoli.update');
 Route::delete('/articoli/{article}', [ArticleController::class, 'destroy'])->name('articoli.destroy');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 	Route::get('/gestione-contatti', [ContactCardController::class, 'index'])
 		->name('contact-cards.index');
 	Route::get('/gestione-contatti/{contactCard}/modifica', [ContactCardController::class, 'edit'])
@@ -36,4 +36,3 @@ Route::middleware(['auth'])->group(function () {
 	Route::put('/profilo-professionale', [ProfessionalProfileController::class, 'update'])
 		->name('professional-profile.update');
 });
-

@@ -18,6 +18,8 @@ class UpdateContactCardRequest extends FormRequest
             'professionals.*.professional_name' => ['required', 'string', 'max:150'],
             'professionals.*.phone' => ['required', 'string', 'max:50'],
             'professionals.*.email' => ['required', 'email', 'max:255'],
+            'professionals.*.profile_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'professionals.*.existing_profile_image' => ['nullable', 'string', 'max:255'],
             'professionals.*.sede' => ['required', 'string', 'max:255'],
         ];
     }
@@ -31,6 +33,9 @@ class UpdateContactCardRequest extends FormRequest
             'professionals.*.phone.required' => 'Il telefono dell\'avvocato è obbligatorio.',
             'professionals.*.email.required' => 'L\'email dell\'avvocato è obbligatoria.',
             'professionals.*.email.email' => 'Inserisci un indirizzo email valido per ogni avvocato.',
+            'professionals.*.profile_image.image' => 'La foto profilo deve essere un file immagine valido.',
+            'professionals.*.profile_image.mimes' => 'La foto profilo deve essere in formato JPG, PNG o WebP.',
+            'professionals.*.profile_image.max' => 'La foto profilo non può superare 5 MB.',
             'professionals.*.sede.required' => 'La sede dell\'avvocato è obbligatoria.',
         ];
     }

@@ -1,5 +1,6 @@
 <x-layout :title="$category->name . ' | Studi Legali Consorziati'"
-    :description="\Illuminate\Support\Str::limit(strip_tags($category->description), 160)">
+    :description="\Illuminate\Support\Str::limit(strip_tags($category->description), 160)"
+    :styles="['resources/css/articles/listing.css', 'resources/css/articles/category.css']">
 
     <div class="category-page">
 
@@ -30,10 +31,19 @@
 
                     <div class="category-lawyers__grid">
                         @foreach($professionals as $professional)
+                            @php
+                                $avatarSrc = $professional->profile_image
+                                    ? asset('storage/' . ltrim($professional->profile_image, '/'))
+                                    : asset('media/Portrait_Placeholder.webp');
+                            @endphp
+
                             <article class="category-lawyer__card">
                                 {{-- Icona/Avatar --}}
                                 <div class="category-lawyer__avatar">
-                                    <i class="fas fa-user-tie"></i>
+                                    <img src="{{ $avatarSrc }}" class="category-lawyer__avatar-image"
+                                        alt="Foto profilo di {{ $professional->professional_name }}" width="64"
+                                        height="64" loading="lazy" decoding="async"
+                                        onerror="this.onerror=null;this.src='{{ asset('media/Portrait_Placeholder.webp') }}';">
                                 </div>
 
                                 <div class="category-lawyer__info">

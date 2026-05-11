@@ -122,6 +122,24 @@
     margin-bottom: 0;
 }
 
+.professional-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.professional-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0;
+    border: 2px solid #e6edf2;
+    background-color: #f5f7f9;
+}
+
 .professional-name {
     font-weight: 800;
     font-size: 0.85rem;
@@ -179,6 +197,10 @@
 
     .professional-name {
         font-size: 0.95rem;
+    }
+
+    .professional-name-row {
+        justify-content: center;
     }
 
     .professional-detail {

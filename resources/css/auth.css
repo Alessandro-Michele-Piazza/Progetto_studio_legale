@@ -62,6 +62,14 @@
     padding: 2rem;
 }
 
+.auth-copy {
+    font-family: var(--opensans);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
 /* ---- Singolo campo ---- */
 .auth-field {
     margin-bottom: 1.25rem;
@@ -112,6 +120,27 @@
     font-family: var(--opensans);
     font-size: 0.8rem;
     color: #dc3545;
+}
+
+.auth-profile-upload {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.auth-profile-upload .auth-input {
+    flex: 1;
+}
+
+.auth-profile-preview {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0;
+    border: 2px solid #e5ebf1;
+    background-color: #f5f7f9;
 }
 
 /* ---- Campo password con occhiolino ---- */
@@ -177,6 +206,48 @@
     outline-offset: 2px;
 }
 
+.auth-secondary-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-family: var(--opensans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--blu_scuro);
+    background-color: transparent;
+    border: 2px solid var(--blu_scuro);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.auth-secondary-btn:hover {
+    background-color: var(--blu_scuro);
+    color: #fff;
+    text-decoration: none;
+}
+
+.auth-actions-stack {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.auth-inline-link {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: var(--opensans);
+    font-size: 0.875rem;
+    color: var(--blu_scuro);
+    text-decoration: underline;
+}
+
+.auth-inline-link:hover {
+    color: var(--blu_medio);
+}
+
 /* ---- Messaggi di stato (es. link reset password inviato) ---- */
 .auth-alert {
     padding: 0.75rem 1rem;
@@ -216,6 +287,11 @@
 
     .auth-wrapper {
         padding: 4rem 0 0;
+        align-items: flex-start;
+    }
+
+    .auth-profile-upload {
+        flex-direction: column;
         align-items: flex-start;
     }
 }

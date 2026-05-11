@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\VerifyEmailCustom;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\ProfessionalProfile;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -14,7 +15,7 @@ use Illuminate\Notifications\Notifiable;
 
 #[Fillable(['name', 'first_name', 'last_name', 'intervention_area', 'sede', 'contact_notes', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory */
     use HasFactory, Notifiable;
@@ -40,5 +41,10 @@ class User extends Authenticatable
     public function professionalProfile(): HasOne
     {
         return $this->hasOne(ProfessionalProfile::class);
+    }
+
+    public function sendEmailVerificationNotification(): void
+    {
+        $this->notify(new VerifyEmailCustom);
     }
 }

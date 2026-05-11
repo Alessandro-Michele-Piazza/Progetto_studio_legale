@@ -7,6 +7,10 @@
         "dev": "vite"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^6.7.2",
+        "@fontsource/open-sans": "^5.1.1",
+        "@fontsource/playfair-display": "^5.1.1",
+        "@fullhuman/postcss-purgecss": "^7.0.2",
         "@tailwindcss/vite": "^4.0.0",
         "axios": ">=1.11.0 <=1.14.0",
         "concurrently": "^9.0.1",

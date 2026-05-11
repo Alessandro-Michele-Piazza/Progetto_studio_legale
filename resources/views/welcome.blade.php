@@ -1,10 +1,11 @@
 <x-layout title="Studio Legale | Consulenza Legale Specializzata - Studi Legali Consorziati"
     description="Gli Studi Legali Consorziati a Catania offrono consulenza legale specializzata in diritto civile, penale, amministrativo e del lavoro. Fondati nel 1998, siamo un punto di riferimento per privati, aziende e istituzioni in tutta la Sicilia. Contattaci per una consulenza personalizzata."
-    :styles="['resources/css/welcome.css']">
+    :styles="['resources/css/welcome.css', 'resources/css/articles/listing.css']">
     <!-- HERO SECTION con Video Background -->
     <header class="hero-section">
-        <video autoplay muted loop playsinline poster="img/fallback-hero.jpg" class="video-bg">
-            <source src="{{ asset('media/video_legge_generico.mp4') }}" type="video/mp4">
+        <video autoplay muted loop playsinline preload="none" class="video-bg" data-hero-video aria-hidden="true"
+            tabindex="-1">
+            <source data-src="{{ asset('media/video_legge_generico.mp4') }}" type="video/mp4">
             Il tuo browser non supporta il video.
         </video>
         <div class="hero-overlay"></div>
@@ -13,7 +14,7 @@
             <div class="hero-divider"></div>
             <p class="lead text-white mb-4 font-body">Consulenza legale specializzata dal 1998</p>
             <a href="#chi-siamo" class="button-home">
-                <i class="fa-solid fa-arrow-down-long arrow-icon arrow"></i>
+                <i class="fa-solid fa-arrow-down-long arrow-icon arrow" aria-hidden="true"></i>
                 <span class="text">Scopri di più</span>
             </a>
         </div>
@@ -23,7 +24,7 @@
     <section id="chi-siamo" class="section-padding">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-10 col-xl-12"> <!-- Allargato leggermente per dare respiro al testo -->
+                <div class="col-lg-10 col-xl-12"> 
                     <div class="chi-siamo-header text-center mb-4">
                         <span
                             class="section-label d-inline-flex align-items-center px-4 py-2 rounded-pill bg-light mb-3">
@@ -33,7 +34,7 @@
                         <div class="section-divider mx-auto"></div>
                     </div>
 
-                    <div class="text-start text-md-center"> 
+                    <div class="text-start text-md-center">
                         <p class="lead text-muted mb-0">
                             Gli <strong class="text-dark">Studi Legali Consorziati a Catania</strong> rappresentano
                             un punto di riferimento per chi
