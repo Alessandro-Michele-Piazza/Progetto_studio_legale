@@ -45,7 +45,7 @@
                 <span class="footer-legal__separator" aria-hidden="true">&mdash;</span>
                 <span class="footer-legal__rights">Tutti i diritti sono riservati</span>
             </p>
-            <p class="footer-powered">POWERED BY: <a href="https://www.linkedin.com/in/alessandro-michele-piazza-13b751171/" target="_blank" rel="noopener noreferrer">Alessandro Michele Piazza</a></p>
+            <p class="footer-powered">POWERED BY: <a href="https://alessandro-michele-piazza.github.io" target="_blank" rel="noopener noreferrer">Alessandro Michele Piazza</a></p>
         </div>
     </div>
 </footer>
