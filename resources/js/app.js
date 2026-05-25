@@ -1,5 +1,3 @@
-import './bottone.js';
-
 function initDeferredBootstrapModules() {
     const triggerSelector = '[data-bs-toggle="collapse"], [data-bs-toggle="dropdown"]';
 
@@ -62,6 +60,25 @@ function initDeferredBootstrapModules() {
             once: true,
             passive: true,
         });
+    });
+}
+
+function runWhenIdle(task, timeout) {
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(task, { timeout: timeout || 1200 });
+        return;
+    }
+
+    window.setTimeout(task, 1);
+}
+
+function initRouteLevelModules() {
+    if (!document.querySelector('.button-home')) {
+        return;
+    }
+
+    import('./bottone.js').catch(function () {
+        // Ignore lazy import failures to avoid breaking primary interactions.
     });
 }
 
@@ -157,6 +174,8 @@ function initDeferredHeroVideo() {
 
 document.addEventListener('DOMContentLoaded', function () {
     initDeferredBootstrapModules();
-    initLazyBackgrounds();
-    initDeferredHeroVideo();
+    initRouteLevelModules();
+
+    runWhenIdle(initLazyBackgrounds, 1500);
+    runWhenIdle(initDeferredHeroVideo, 2500);
 });

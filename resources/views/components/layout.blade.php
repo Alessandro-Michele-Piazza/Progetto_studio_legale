@@ -32,16 +32,21 @@
 
     <link rel="canonical" href="{{ $ogUrl ?: url()->current() }}">
 
-    @vite(array_merge(['resources/css/app.css', 'resources/css/footer.css'], $styles, ['resources/js/app.js']))
-    <link rel="preload" href="{{ Vite::asset('resources/css/fonts-optional.css') }}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
+    @vite(array_merge(['resources/css/app.css'], $styles, ['resources/js/app.js']))
+    <link rel="stylesheet" href="{{ Vite::asset('resources/css/fonts-optional.css') }}" media="print"
+        onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="{{ Vite::asset('resources/css/fonts-optional.css') }}">
     </noscript>
-    <link rel="preload" href="{{ Vite::asset('resources/css/icons.css') }}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="{{ Vite::asset('resources/css/icons.css') }}" media="print"
+        onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="{{ Vite::asset('resources/css/icons.css') }}">
+    </noscript>
+    <link rel="stylesheet" href="{{ Vite::asset('resources/css/footer.css') }}" media="print"
+        onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="{{ Vite::asset('resources/css/footer.css') }}">
     </noscript>
     <title>{{ $title }}</title>
 

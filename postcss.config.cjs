@@ -1,4 +1,5 @@
 const purgecss = require('@fullhuman/postcss-purgecss');
+const cssnano = require('cssnano');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -55,6 +56,16 @@ module.exports = {
                               ...fontAwesomeSafelist,
                           ],
                       },
+                  }),
+                  cssnano({
+                      preset: [
+                          'default',
+                          {
+                              discardComments: {
+                                  removeAll: true,
+                              },
+                          },
+                      ],
                   }),
               ]
             : []),

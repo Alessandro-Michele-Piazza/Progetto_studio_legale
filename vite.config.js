@@ -4,6 +4,7 @@ import laravel from 'laravel-vite-plugin';
 export default defineConfig({
     plugins: [
         laravel({
+            hotFile: 'storage/vite.hot',
             input: [
                 'resources/css/app.css',
                 'resources/css/fonts-optional.css',
@@ -26,6 +27,35 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        minify: 'terser',
+        cssCodeSplit: true,
+        terserOptions: {
+            compress: {
+                passes: 2,
+            },
+            format: {
+                comments: false,
+            },
+        },
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (!id.includes('node_modules')) {
+                        return;
+                    }
+
+                    if (id.includes('bootstrap/js/dist')) {
+                        return 'vendor-bootstrap';
+                    }
+
+                    if (id.includes('axios')) {
+                        return 'vendor-axios';
+                    }
+                },
+            },
+        },
+    },
     server: {
         watch: {
             ignored: ['**/storage/framework/views/**'],
