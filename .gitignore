@@ -1,5 +1,4 @@
 *.log
-lighthouse-*.json
 .DS_Store
 .env
 .env.backup
