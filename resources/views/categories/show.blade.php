@@ -23,7 +23,7 @@
 
                 @if($professionals->isNotEmpty())
                     <div class="category-section-heading">
-                        <span class="section-label">I tuoi riferimenti legali</span>
+                        <span class="section-label ">I tuoi riferimenti legali</span>
                         <h2 class="section-title category-lawyer__title">Professionisti dedicati a {{ $category->name }}
                         </h2>
                         <div class="section-divider"></div>
@@ -92,8 +92,9 @@
         <section class="category-articles" aria-label="Articoli della categoria">
             <div class="container">
                 <div class="category-section-heading">
-                    <span class="section-label">
-                        <i class="fas fa-newspaper me-2" aria-hidden="true"></i>Approfondimenti
+                    <span class="section-label ">
+                        <i class="fas fa-newspaper me-2 fs-4" aria-hidden="true"></i>
+                        <span class="fs-6">Approfondimenti</span>
                     </span>
                     <h2 class="section-title">Ultimi articoli</h2>
                     <div class="section-divider"></div>
